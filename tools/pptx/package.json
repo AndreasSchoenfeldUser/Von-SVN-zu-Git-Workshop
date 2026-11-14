@@ -3,7 +3,7 @@
   "private": true,
   "description": "Export der Slide-Decks nach PowerPoint",
   "scripts": {
-    "build": "node export.js tag1 && node export.js tag2"
+    "build": "node export.js --all"
   },
   "dependencies": {
     "@phosphor-icons/core": "^2.1.1",

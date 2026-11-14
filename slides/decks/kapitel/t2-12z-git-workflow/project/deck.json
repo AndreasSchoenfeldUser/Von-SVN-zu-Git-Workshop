@@ -1,0 +1,52 @@
+{
+ "v": 5,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-14T03:45:00Z"
+ },
+ "lists": "css",
+ "format": {
+  "v": 1,
+  "shared": [
+   "project/deck.css"
+  ]
+ },
+ "title": "Von SVN zu Git – Zusatzmodul: Der Git-Workflow",
+ "order": [
+  "zw",
+  "zw-branches",
+  "zw-ueberblick",
+  "zw-feature",
+  "zw-release",
+  "zw-hotfix",
+  "zw-statement",
+  "zw-regeln",
+  "zw-eignung",
+  "zw-praxis-feature",
+  "zw-praxis-release",
+  "zw-praxis-hotfix",
+  "zw-uebung"
+ ],
+ "cover": "zw",
+ "sections": {
+  "s1": {
+   "description": "Zusatzmodul: Git-Workflow mit develop-, Feature-, Bugfix-, Release- und Hotfix-Branches",
+   "start": "zw"
+  }
+ },
+ "faces": {
+  "space-grotesk": {
+   "family": "Space Grotesk",
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+  },
+  "inter": {
+   "family": "Inter",
+   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  },
+  "jetbrains-mono": {
+   "family": "JetBrains Mono",
+   "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+  }
+ },
+ "designSystems": []
+}

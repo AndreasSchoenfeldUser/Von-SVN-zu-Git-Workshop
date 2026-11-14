@@ -1,0 +1,44 @@
+{
+ "v": 5,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-14T03:45:00Z"
+ },
+ "lists": "css",
+ "format": {
+  "v": 1,
+  "shared": [
+   "project/deck.css"
+  ]
+ },
+ "title": "Von SVN zu Git – Modul 12: Den Teamablauf vereinbaren",
+ "order": [
+  "m12",
+  "m12-strategien",
+  "m12-rebase",
+  "m12-praxis",
+  "m12-uebung"
+ ],
+ "cover": "m12",
+ "sections": {
+  "s1": {
+   "description": "Modul 12: Den Teamablauf vereinbaren – Branching-Strategien und Spielregeln",
+   "start": "m12"
+  }
+ },
+ "faces": {
+  "space-grotesk": {
+   "family": "Space Grotesk",
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+  },
+  "inter": {
+   "family": "Inter",
+   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  },
+  "jetbrains-mono": {
+   "family": "JetBrains Mono",
+   "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+  }
+ },
+ "designSystems": []
+}

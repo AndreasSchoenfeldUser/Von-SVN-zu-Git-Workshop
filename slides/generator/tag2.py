@@ -9,7 +9,8 @@ d = Deck(str(DECKS / "tag2"), "Von SVN zu Git – Tag 2: Gemeinsam mit Git", "Vo
 M = lambda n, t: "Modul %02d · %s" % (n, t)
 
 # ---------- Einführung ----------
-d.section("Einführung: Ablauf des zweiten Tages und die Stationen 3 bis 6")
+d.section("Einführung: Ablauf des zweiten Tages und die Stationen 3 bis 6",
+          "t2-00-einfuehrung", "Von SVN zu Git – Tag 2: Einführung")
 cover(d, "cover", "Von SVN zu Git", "Git Grundlagen für Entwickler, die aus der SVN-Versionsverwaltung kommen",
       "Tag 2", "Gemeinsam mit Git: teilen, prüfen, integrieren und ausliefern",
       "Begrüßung zum zweiten Tag. Offene Fragen von gestern einsammeln und im Rückblick beantworten.")
@@ -34,7 +35,8 @@ content(d, "leitidee", "Einführung", "Leitidee", "Heute: die Stationen 3 bis 6 
 
 # ---------- Modul 8 ----------
 crumb = M(8, "Rückblick")
-d.section("Modul 08: Rückblick auf Tag 1")
+d.section("Modul 08: Rückblick auf Tag 1",
+          "t2-08-rueckblick", "Von SVN zu Git – Modul 08: Rückblick")
 divider(d, "m8", "08", "Rückblick",
         "Wir festigen die Grundlagen von gestern und ergänzen die Skizze unseres Arbeitsablaufs.",
         "09:00 – 09:30 UHR · TAG 1 FESTIGEN")
@@ -73,7 +75,8 @@ uebung(d, "m8-uebung", crumb, "Die Skizze ergänzen", [
 
 # ---------- Modul 9 ----------
 crumb = M(9, "Integrieren")
-d.section("Modul 09: Integrieren – Merge-Konflikte verstehen und lösen")
+d.section("Modul 09: Integrieren – Merge-Konflikte verstehen und lösen",
+          "t2-09-integrieren", "Von SVN zu Git – Modul 09: Integrieren")
 divider(d, "m9", "09", "Integrieren",
         "Wir führen Ergebnisse bewusst zusammen und lösen Konflikte ruhig und nachvollziehbar.",
         "09:30 – 10:30 UHR · STATION 5")
@@ -129,7 +132,8 @@ uebung(d, "m9-uebung", crumb, "Konflikte gezielt herbeiführen", [
 
 # ---------- Modul 10 ----------
 crumb = M(10, "Teilen und abholen")
-d.section("Modul 10: Teilen und abholen – mit Remote-Repositories arbeiten")
+d.section("Modul 10: Teilen und abholen – mit Remote-Repositories arbeiten",
+          "t2-10-teilen-und-abholen", "Von SVN zu Git – Modul 10: Teilen und abholen")
 divider(d, "m10", "10", "Teilen und abholen",
         "Wir arbeiten mit dem gemeinsamen Repository in GitLab und entscheiden bewusst, wann wir einen Stand teilen.",
         "10:45 – 12:00 UHR · STATION 3")
@@ -184,7 +188,8 @@ uebung(d, "m10-uebung", crumb, "Erste Schritte im Team-Repository", [
 
 # ---------- Modul 11 ----------
 crumb = M(11, "Gemeinsam prüfen")
-d.section("Modul 11: Gemeinsam prüfen – Merge Requests und Code Review")
+d.section("Modul 11: Gemeinsam prüfen – Merge Requests und Code Review",
+          "t2-11-gemeinsam-pruefen", "Von SVN zu Git – Modul 11: Gemeinsam prüfen")
 divider(d, "m11", "11", "Gemeinsam prüfen",
         "Wir bringen Änderungen über Merge Requests in die Hauptlinie und prüfen sie gemeinsam.",
         "13:00 – 13:45 UHR · STATION 4")
@@ -238,7 +243,8 @@ uebung(d, "m11-uebung", crumb, "Review im Team", [
 
 # ---------- Modul 12 ----------
 crumb = M(12, "Den Teamablauf vereinbaren")
-d.section("Modul 12: Den Teamablauf vereinbaren – Branching-Strategien und Spielregeln")
+d.section("Modul 12: Den Teamablauf vereinbaren – Branching-Strategien und Spielregeln",
+          "t2-12-teamablauf", "Von SVN zu Git – Modul 12: Den Teamablauf vereinbaren")
 divider(d, "m12", "12", "Den Teamablauf vereinbaren",
         "Wir wählen eine Branching-Strategie, die zum Team passt, und halten unsere Spielregeln fest.",
         "13:45 – 14:30 UHR · TEAMREGELN")
@@ -293,7 +299,8 @@ exec((HERE / "workflow_module.py").read_text(encoding="utf-8"))
 
 # ---------- Modul 13 ----------
 crumb = M(13, "Den Umzug planen")
-d.section("Modul 13: Den Umzug planen – ein SVN-Repository mit Historie migrieren")
+d.section("Modul 13: Den Umzug planen – ein SVN-Repository mit Historie migrieren",
+          "t2-13-umzug-planen", "Von SVN zu Git – Modul 13: Den Umzug planen")
 divider(d, "m13", "13", "Den Umzug planen",
         "Wir klären die Fragen, die vor einer Migration von SVN nach Git beantwortet sein müssen.",
         "14:45 – 15:30 UHR · MIGRATION")
@@ -346,7 +353,8 @@ uebung(d, "m13-uebung", crumb, "Ein Migrationsplan für das Reiseportal", [
 
 # ---------- Modul 14 ----------
 crumb = M(14, "Umzugstag")
-d.section("Modul 14: Abschlussübung „Umzugstag“ – alle sechs Stationen im Team")
+d.section("Modul 14: Abschlussübung „Umzugstag“ – alle sechs Stationen im Team",
+          "t2-14-umzugstag", "Von SVN zu Git – Modul 14: Abschlussübung „Umzugstag“")
 divider(d, "m14", "14", "Abschlussübung: Umzugstag",
         "Wir ziehen das SVN-Repository des Reiseportals nach GitLab um und liefern das erste Feature im neuen Zuhause aus.",
         "15:30 – 16:45 UHR · STATION 1 BIS 6")
@@ -389,7 +397,8 @@ uebung(d, "m14-uebung2", crumb, "Teil 2: Das erste Feature im neuen Zuhause", [
 
 # ---------- Modul 15 ----------
 crumb = M(15, "Abschluss")
-d.section("Modul 15: Abschluss – neuer Arbeitsablauf, Ausblick und Feedback")
+d.section("Modul 15: Abschluss – neuer Arbeitsablauf, Ausblick und Feedback",
+          "t2-15-abschluss", "Von SVN zu Git – Modul 15: Abschluss")
 divider(d, "m15", "15", "Abschluss",
         "Wir vergleichen den neuen Arbeitsablauf mit der Skizze vom Auftakt und blicken auf die nächsten Schritte.",
         "16:45 – 17:00 UHR · AUSBLICK UND FEEDBACK")
@@ -413,4 +422,4 @@ statement(d, "danke", "COMQUENT ACADEMY", "Vielen Dank!",
           "Unterlagen, Übungen und die Git-Rettungskarte finden Sie im Schulungsportal.",
           "Dank an die Teilnehmenden. Hinweis auf Feedback und die Unterlagen im Schulungsportal.")
 
-d.write()
+d.write(str(DECKS / "kapitel"))

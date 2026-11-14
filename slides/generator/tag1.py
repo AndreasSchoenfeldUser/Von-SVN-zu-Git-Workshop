@@ -7,7 +7,8 @@ d = Deck(str(DECKS / "tag1"), "Von SVN zu Git – Tag 1: Allein mit Git", "Von S
 M = lambda n, t: "Modul %02d · %s" % (n, t)
 
 # ---------- Einführung ----------
-d.section("Einführung: Kursablauf, Leitidee und Übungsprojekt")
+d.section("Einführung: Kursablauf, Leitidee und Übungsprojekt",
+          "t1-00-einfuehrung", "Von SVN zu Git – Tag 1: Einführung")
 cover(d, "cover", "Von SVN zu Git", "Git Grundlagen für Entwickler, die aus der SVN-Versionsverwaltung kommen",
       "Tag 1", "Allein mit Git: das eigene, lokale Repository",
       "Begrüßung, Vorstellung des Dozenten und der Teilnehmenden. Erwartungen kurz abfragen: Wie lange arbeitet das Team schon mit SVN, welche Projekte sollen umziehen?")
@@ -39,7 +40,8 @@ content(d, "projekt", "Einführung", "Übungsprojekt", "Roter Faden: das Reisepo
 
 # ---------- Modul 1 ----------
 crumb = M(1, "Auftakt")
-d.section("Modul 01: Ausgangslage – wie arbeitet das Team heute mit SVN?")
+d.section("Modul 01: Ausgangslage – wie arbeitet das Team heute mit SVN?",
+          "t1-01-auftakt", "Von SVN zu Git – Modul 01: Auftakt")
 divider(d, "m1", "01", "Auftakt: Wie arbeiten wir heute?",
         "Wir machen den heutigen Arbeitsablauf sichtbar und erkennen, an welchen Stellen Git anders denkt.",
         "09:00 – 09:45 UHR · AUSGANGSLAGE")
@@ -71,7 +73,8 @@ uebung(d, "m1-uebung", crumb, "Unser Arbeitsablauf heute", [
 
 # ---------- Modul 2 ----------
 crumb = M(2, "Das Git-Modell")
-d.section("Modul 02: Das Git-Modell – drei Bereiche, Snapshots und Commit-Hashes")
+d.section("Modul 02: Das Git-Modell – drei Bereiche, Snapshots und Commit-Hashes",
+          "t1-02-git-modell", "Von SVN zu Git – Modul 02: Das Git-Modell")
 divider(d, "m2", "02", "Das Git-Modell",
         "Wir verstehen, wo eine Änderung sich gerade befindet und was ein Commit in Git tatsächlich speichert.",
         "09:45 – 10:30 UHR · GRUNDBEGRIFFE")
@@ -124,7 +127,8 @@ uebung(d, "m2-uebung", crumb, "Die drei Bereiche erleben", [
 
 # ---------- Modul 3 ----------
 crumb = M(3, "Arbeiten und festhalten")
-d.section("Modul 03: Arbeiten und festhalten – der lokale Arbeitszyklus")
+d.section("Modul 03: Arbeiten und festhalten – der lokale Arbeitszyklus",
+          "t1-03-arbeiten-und-festhalten", "Von SVN zu Git – Modul 03: Arbeiten und festhalten")
 divider(d, "m3", "03", "Arbeiten und festhalten",
         "Wir legen ein Repository an, halten Änderungen fest und lesen die Historie.",
         "10:45 – 12:00 UHR · STATION 2")
@@ -192,7 +196,8 @@ uebung(d, "m3-uebung", crumb, "Der erste eigene Commit", [
 
 # ---------- Modul 4 ----------
 crumb = M(4, "In kleinen Schritten arbeiten")
-d.section("Modul 04: In kleinen Schritten arbeiten – gute Commits und Commit Messages")
+d.section("Modul 04: In kleinen Schritten arbeiten – gute Commits und Commit Messages",
+          "t1-04-kleine-schritte", "Von SVN zu Git – Modul 04: In kleinen Schritten arbeiten")
 divider(d, "m4", "04", "In kleinen Schritten arbeiten",
         "Wir nutzen Commits als nachvollziehbares Arbeitsprotokoll, das auch Kollegen in einem Jahr noch verstehen.",
         "13:00 – 14:00 UHR · STATION 2")
@@ -261,7 +266,8 @@ uebung(d, "m4-uebung", crumb, "Aufräumen in kleinen Schritten", [
 
 # ---------- Modul 5 ----------
 crumb = M(5, "Sicher experimentieren")
-d.section("Modul 05: Sicher experimentieren – Änderungen zurücknehmen und parken")
+d.section("Modul 05: Sicher experimentieren – Änderungen zurücknehmen und parken",
+          "t1-05-sicher-experimentieren", "Von SVN zu Git – Modul 05: Sicher experimentieren")
 divider(d, "m5", "05", "Sicher experimentieren",
         "Wir nehmen Änderungen gezielt zurück, parken Zwischenstände und wissen, welcher Weg zurück wann der richtige ist.",
         "14:00 – 15:15 UHR · STATION 2")
@@ -313,7 +319,8 @@ uebung(d, "m5-uebung", crumb, "Der Rettungsdienst", [
 
 # ---------- Modul 6 ----------
 crumb = M(6, "Ein Branch pro Aufgabe")
-d.section("Modul 06: Ein Branch pro Aufgabe – Branches als alltägliches Werkzeug")
+d.section("Modul 06: Ein Branch pro Aufgabe – Branches als alltägliches Werkzeug",
+          "t1-06-branch-pro-aufgabe", "Von SVN zu Git – Modul 06: Ein Branch pro Aufgabe")
 divider(d, "m6", "06", "Ein Branch pro Aufgabe",
         "Wir nutzen Branches für jede Aufgabe, arbeiten parallel und führen Ergebnisse wieder zusammen.",
         "15:30 – 16:30 UHR · STATION 1")
@@ -372,7 +379,8 @@ uebung(d, "m6-uebung", crumb, "Zwei Aufgaben, ein Repository", [
 
 # ---------- Modul 7 ----------
 crumb = M(7, "Der kaputte Freitag")
-d.section("Modul 07: Übung „Der kaputte Freitag“ – Fehlersuche in der Historie")
+d.section("Modul 07: Übung „Der kaputte Freitag“ – Fehlersuche in der Historie",
+          "t1-07-kaputter-freitag", "Von SVN zu Git – Modul 07: Der kaputte Freitag")
 divider(d, "m7", "07", "Übung: Der kaputte Freitag",
         "Wir wenden alles Gelernte an und finden in der Historie den Schritt, der die Buchungsstrecke lahmgelegt hat.",
         "16:30 – 17:00 UHR · ANWENDUNG")
@@ -407,4 +415,4 @@ content(d, "abschluss", "Einführung", "Abschluss Tag 1", "Rückblick und Ausbli
         '<p class="legend">Heute: Stationen 1 und 2 im eigenen Repository. Morgen: Teilen, Prüfen lassen, Integrieren und Ausliefern im Team, zum Abschluss der Umzug nach GitLab.</p>',
         "Kurze Feedbackrunde: Was war heute der größte Aha-Moment, was bleibt unklar? Offene Punkte für den Rückblick morgen früh notieren.")
 
-d.write()
+d.write(str(DECKS / "kapitel"))

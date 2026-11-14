@@ -1,6 +1,10 @@
 // Export eines Slide-Decks nach PowerPoint (.pptx) mit editierbaren Formen und Texten.
 //
-// Aufruf (aus tools/pptx):  node export.js tag1   bzw.   npm run build
+// Aufruf (aus tools/pptx):
+//   npm run build                         alle Decks: Tag 1, Tag 2 und jedes Kapitel
+//   node export.js tag1                   ein Deck unter slides/decks/
+//   node export.js kapitel/t1-03-arbeiten-und-festhalten
+// Ausgabe: slides/decks/<deck> -> slides/pptx/<deck>.pptx
 //
 // Ablauf: Chrome rendert die erzeugten HTML-Slides (deck.json, deck.css, slides/*.html)
 // mit den Web-Fonts. Aus dem berechneten Layout entstehen native PowerPoint-Elemente:
@@ -16,10 +20,8 @@ const { chromium } = require('playwright');
 const PptxGenJS = require('pptxgenjs');
 
 const REPO = path.resolve(__dirname, '..', '..');
-const deckKey = process.argv[2];
-if (!deckKey) { console.error('Aufruf: node export.js <tag1|tag2> [ausgabe.pptx]'); process.exit(1); }
-const DECK_DIR = path.join(REPO, 'slides', 'decks', deckKey, 'project');
-const OUT = process.argv[3] || path.join(REPO, 'slides', 'pptx', `${deckKey}.pptx`);
+const DECKS = path.join(REPO, 'slides', 'decks');
+const PPTX = path.join(REPO, 'slides', 'pptx');
 const LOGO_FILE = path.join(REPO, 'slides', 'assets', 'comquent-academy-logo.png');
 const ICON_DIR = path.join(__dirname, 'node_modules', '@phosphor-icons', 'core', 'assets', 'regular');
 const ICON_ALIAS = { Settings: 'gear' };
@@ -235,13 +237,12 @@ async function renderIcons(browser, names) {
   return icons;
 }
 
-async function load() {
+async function load(browser, DECK_DIR) {
   const deck = JSON.parse(fs.readFileSync(path.join(DECK_DIR, 'deck.json'), 'utf8'));
   const body = deck.order.map(id => fs.readFileSync(path.join(DECK_DIR, 'slides', id + '.html'), 'utf8')).join('\n');
   const fonts = Object.values(deck.faces || {}).map(f => `<link rel="stylesheet" href="${f.href}">`).join('');
   const html = `<!doctype html><html><head><meta charset="utf-8"><style>${SHIM}</style>${fonts}<link rel="stylesheet" href="/project/deck.css"></head><body>${body}</body></html>`;
 
-  const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : { channel: process.env.CHROME_CHANNEL || 'chrome' });
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   await page.route('**/*', r => {
     const u = new URL(r.request().url());
@@ -256,12 +257,14 @@ async function load() {
   });
   await page.goto('http://deck.local/', { waitUntil: 'networkidle' });
   await page.evaluate(() => document.fonts.ready);
+  // Alle Schnitte laden, auch solche, die dieses Deck nicht verwendet; sonst schlägt die Prüfung fehl.
+  await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load().catch(() => null))));
   const missing = await page.evaluate(() => ['Space Grotesk', 'Inter', 'JetBrains Mono'].filter(f => !document.fonts.check(`700 32px "${f}"`)));
   if (missing.length) console.warn('Web-Fonts nicht geladen, Layout weicht ab:', missing.join(', '));
   const slides = await page.evaluate(extract);
   const iconKeys = [...new Set(slides.flatMap(s => s.items.filter(i => i.type === 'icon').map(i => `${i.name}|${i.color}`)))];
   const icons = await renderIcons(browser, iconKeys);
-  await browser.close();
+  await page.close();
   return { deck, slides, icons };
 }
 
@@ -459,8 +462,8 @@ async function placeTitles(file, boxes) {
   fs.writeFileSync(file, await zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE' }));
 }
 
-async function build() {
-  const { deck, slides, icons } = await load();
+async function build(browser, deckDir, OUT) {
+  const { deck, slides, icons } = await load(browser, deckDir);
   const pres = new PptxGenJS();
   pres.layout = 'LAYOUT_WIDE';
   pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFace };
@@ -511,4 +514,32 @@ async function build() {
   console.log(`${slides.length} Slides -> ${path.relative(REPO, OUT)}`);
 }
 
-build().catch(e => { console.error(e); process.exit(1); });
+function allDecks() {
+  const kap = path.join(DECKS, 'kapitel');
+  const chapters = fs.existsSync(kap) ? fs.readdirSync(kap).filter(d => fs.existsSync(path.join(kap, d, 'project', 'deck.json'))).sort().map(d => `kapitel/${d}`) : [];
+  return ['tag1', 'tag2', ...chapters];
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const all = !args.length || args[0] === '--all';
+  const keys = all ? allDecks() : args;
+  const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : { channel: process.env.CHROME_CHANNEL || 'chrome' });
+  try {
+    for (const key of keys) {
+      const dir = path.join(DECKS, key, 'project');
+      if (!fs.existsSync(path.join(dir, 'deck.json'))) throw new Error(`Kein Deck unter ${path.relative(REPO, dir)}`);
+      await build(browser, dir, path.join(PPTX, `${key}.pptx`));
+    }
+  } finally {
+    await browser.close();
+  }
+  if (all) { // PowerPoint-Dateien entfernen, deren Kapitel es nicht mehr gibt
+    const kap = path.join(PPTX, 'kapitel');
+    if (fs.existsSync(kap)) for (const f of fs.readdirSync(kap)) {
+      if (f.endsWith('.pptx') && !keys.includes(`kapitel/${f.slice(0, -5)}`)) { fs.unlinkSync(path.join(kap, f)); console.log(`entfernt: kapitel/${f}`); }
+    }
+  }
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

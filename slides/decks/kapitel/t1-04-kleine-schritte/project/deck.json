@@ -1,0 +1,45 @@
+{
+ "v": 5,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-14T03:45:00Z"
+ },
+ "lists": "css",
+ "format": {
+  "v": 1,
+  "shared": [
+   "project/deck.css"
+  ]
+ },
+ "title": "Von SVN zu Git – Modul 04: In kleinen Schritten arbeiten",
+ "order": [
+  "m4",
+  "m4-protokoll",
+  "m4-message",
+  "m4-ignore",
+  "m4-patch",
+  "m4-uebung"
+ ],
+ "cover": "m4",
+ "sections": {
+  "s1": {
+   "description": "Modul 04: In kleinen Schritten arbeiten – gute Commits und Commit Messages",
+   "start": "m4"
+  }
+ },
+ "faces": {
+  "space-grotesk": {
+   "family": "Space Grotesk",
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+  },
+  "inter": {
+   "family": "Inter",
+   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  },
+  "jetbrains-mono": {
+   "family": "JetBrains Mono",
+   "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+  }
+ },
+ "designSystems": []
+}

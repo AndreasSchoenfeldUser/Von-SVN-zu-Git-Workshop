@@ -1,6 +1,7 @@
 # ---------- Zusatzmodul: Git-Workflow ----------
 crumb = "Zusatzmodul · Git-Workflow"
-d.section("Zusatzmodul: Git-Workflow mit develop-, Feature-, Bugfix-, Release- und Hotfix-Branches")
+d.section("Zusatzmodul: Git-Workflow mit develop-, Feature-, Bugfix-, Release- und Hotfix-Branches",
+          "t2-12z-git-workflow", "Von SVN zu Git – Zusatzmodul: Der Git-Workflow")
 divider(d, "zw", "+", "Zusatzmodul: Der Git-Workflow",
         "Wir lernen einen Workflow kennen, in dem main den produktiven Stand hält und develop in der Verantwortung der Entwicklung liegt.",
         "ZUSATZMODUL · CA. 60 MINUTEN",

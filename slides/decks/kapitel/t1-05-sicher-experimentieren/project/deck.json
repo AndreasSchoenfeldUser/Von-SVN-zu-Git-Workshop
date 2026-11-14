@@ -1,0 +1,44 @@
+{
+ "v": 5,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-14T03:45:00Z"
+ },
+ "lists": "css",
+ "format": {
+  "v": 1,
+  "shared": [
+   "project/deck.css"
+  ]
+ },
+ "title": "Von SVN zu Git – Modul 05: Sicher experimentieren",
+ "order": [
+  "m5",
+  "m5-wege",
+  "m5-reset",
+  "m5-praxis",
+  "m5-uebung"
+ ],
+ "cover": "m5",
+ "sections": {
+  "s1": {
+   "description": "Modul 05: Sicher experimentieren – Änderungen zurücknehmen und parken",
+   "start": "m5"
+  }
+ },
+ "faces": {
+  "space-grotesk": {
+   "family": "Space Grotesk",
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+  },
+  "inter": {
+   "family": "Inter",
+   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  },
+  "jetbrains-mono": {
+   "family": "JetBrains Mono",
+   "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+  }
+ },
+ "designSystems": []
+}

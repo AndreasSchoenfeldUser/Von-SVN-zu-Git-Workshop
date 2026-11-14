@@ -1,4 +1,4 @@
-import json, os, html
+import json, os, html, shutil
 
 LOGO = "/_blob/c8bbd1d863b96e8d96ffc7eb58fb5315"
 
@@ -150,10 +150,13 @@ class Deck:
         self.footer_text = footer_text
         self.slides = []  # (id, html)
         self.sections = {}
+        self.chapters = {}  # Abschnitt -> (Verzeichnisname, Titel) für die Kapitel-Decks
 
-    def section(self, desc):
+    def section(self, desc, slug, title):
+        """Beginnt einen Abschnitt. slug: Verzeichnis des Kapitel-Decks, title: dessen Titel."""
         key = "s%d" % (len(self.sections) + 1)
         self.sections[key] = {"description": desc, "start": None}
+        self.chapters[key] = (slug, title)
         self._pending = key
 
     def add(self, sid, html_):
@@ -166,20 +169,37 @@ class Deck:
         return ('<div class="footer"><div class="footl"><img class="footlogo" src="%s" alt="Comquent Academy">'
                 '<p class="foot">%s</p></div><div class="pageno"></div></div>') % (LOGO, self.footer_text)
 
-    def write(self):
-        os.makedirs(os.path.join(self.root, "project", "slides"), exist_ok=True)
-        idx = {"v": 5, "createdOnFiles": {"v": 1, "at": "2026-11-14T03:45:00Z"}, "lists": "css",
-               "format": {"v": 1, "shared": ["project/deck.css"]}, "title": self.title,
-               "order": [s for s, _ in self.slides], "cover": self.slides[0][0],
-               "sections": self.sections, "faces": FACES, "designSystems": []}
-        with open(os.path.join(self.root, "project", "deck.json"), "w") as f:
-            json.dump(idx, f, ensure_ascii=False, indent=1)
-        with open(os.path.join(self.root, "project", "deck.css"), "w") as f:
-            f.write(CSS)
-        for sid, h in self.slides:
-            with open(os.path.join(self.root, "project", "slides", sid + ".html"), "w") as f:
-                f.write(h)
+    def write(self, chapters_dir=None):
+        """Schreibt das Gesamt-Deck nach root und, falls angegeben, ein Deck je Kapitel nach chapters_dir."""
+        _write_deck(self.root, self.title, self.slides, self.sections)
         print(len(self.slides), "slides")
+        if not chapters_dir:
+            return
+        starts = [(k, v["start"]) for k, v in self.sections.items()]
+        ids = [s for s, _ in self.slides]
+        for i, (key, start) in enumerate(starts):
+            end = ids.index(starts[i + 1][1]) if i + 1 < len(starts) else len(ids)
+            part = self.slides[ids.index(start):end]
+            slug, title = self.chapters[key]
+            root = os.path.join(chapters_dir, slug)
+            shutil.rmtree(root, ignore_errors=True)
+            _write_deck(root, title, part, {"s1": {"description": self.sections[key]["description"], "start": start}})
+            print("  %-34s %2d slides" % (slug, len(part)))
+
+
+def _write_deck(root, title, slides, sections):
+    os.makedirs(os.path.join(root, "project", "slides"), exist_ok=True)
+    idx = {"v": 5, "createdOnFiles": {"v": 1, "at": "2026-11-14T03:45:00Z"}, "lists": "css",
+           "format": {"v": 1, "shared": ["project/deck.css"]}, "title": title,
+           "order": [s for s, _ in slides], "cover": slides[0][0],
+           "sections": sections, "faces": FACES, "designSystems": []}
+    with open(os.path.join(root, "project", "deck.json"), "w") as f:
+        json.dump(idx, f, ensure_ascii=False, indent=1)
+    with open(os.path.join(root, "project", "deck.css"), "w") as f:
+        f.write(CSS)
+    for sid, h in slides:
+        with open(os.path.join(root, "project", "slides", sid + ".html"), "w") as f:
+            f.write(h)
 
 
 def aside(n):

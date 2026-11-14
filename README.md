@@ -8,14 +8,15 @@ Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (
 | --- | --- |
 | `agenda/kursagenda.md` | Kursagenda mit Lernzielen, Leitidee, Modulen beider Tage und Zusatzmodul |
 | `slides/generator/` | Python-Generator für die Slides: `common.py` (Stil und Bausteine), `tag1.py`, `tag2.py`, `workflow_module.py` (Zusatzmodul Git-Workflow) |
-| `slides/decks/tag1/`, `slides/decks/tag2/` | Erzeugte Deck-Dateien (`deck.json`, `deck.css`, eine HTML-Datei je Slide) |
+| `slides/decks/tag1/`, `slides/decks/tag2/` | Erzeugte Gesamt-Decks je Tag (`deck.json`, `deck.css`, eine HTML-Datei je Slide) |
+| `slides/decks/kapitel/` | Ein Deck je Kapitel (Einführung, Module, Zusatzmodul), zum Beispiel `t1-03-arbeiten-und-festhalten` |
 | `slides/assets/` | Logo der Comquent Academy |
-| `slides/pptx/` | PowerPoint-Fassung beider Tage (`tag1.pptx`, `tag2.pptx`), aus den Deck-Dateien erzeugt |
+| `slides/pptx/` | PowerPoint-Fassung beider Tage (`tag1.pptx`, `tag2.pptx`) und jedes Kapitels (`kapitel/*.pptx`), aus den Deck-Dateien erzeugt |
 | `tools/preview/` | Lokale Vorschau der Slides als PNG |
 | `tools/pptx/` | Export der Decks nach PowerPoint |
 | `artifacts.json` | Zuordnung zu den veröffentlichten Claude-Artefakten (Decks und Agenda) |
 
-Umfang: Tag 1 mit 39 Slides (Module 01–07), Tag 2 mit 55 Slides (Module 08–15 und Zusatzmodul Git-Workflow). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung.
+Umfang: Tag 1 mit 39 Slides (Module 01–07), Tag 2 mit 55 Slides (Module 08–15 und Zusatzmodul Git-Workflow). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung und liegt zusätzlich als eigenes Deck vor (18 Kapitel).
 
 ## Slides erzeugen
 
@@ -24,7 +25,9 @@ python3 slides/generator/tag1.py
 python3 slides/generator/tag2.py
 ```
 
-Die Skripte schreiben nach `slides/decks/tag1/project` bzw. `slides/decks/tag2/project`. Die erzeugten Dateien sind Teil des Repositorys, damit Änderungen im Review sichtbar sind.
+Die Skripte schreiben das Gesamt-Deck des Tages nach `slides/decks/tag1/project` bzw. `slides/decks/tag2/project` und zusätzlich ein Deck je Kapitel nach `slides/decks/kapitel/<kapitel>/project`. Die Kapitel ergeben sich aus den Abschnitten (`d.section(...)`) in den Generator-Skripten; Verzeichnisname und Titel stehen dort beim jeweiligen Abschnitt. Die erzeugten Dateien sind Teil des Repositorys, damit Änderungen im Review sichtbar sind.
+
+Kapitel von Tag 1: `t1-00-einfuehrung`, `t1-01-auftakt` bis `t1-07-kaputter-freitag`. Kapitel von Tag 2: `t2-00-einfuehrung`, `t2-08-rueckblick` bis `t2-15-abschluss`, dazu `t2-12z-git-workflow` für das Zusatzmodul.
 
 ## Vorschau
 
@@ -47,7 +50,7 @@ npm install
 npm run build
 ```
 
-Der Export lädt die erzeugten Deck-Dateien in Chrome, übernimmt das berechnete Layout und schreibt nach `slides/pptx/tag1.pptx` und `slides/pptx/tag2.pptx`. Ein einzelner Tag: `node export.js tag2`. Die Folien bestehen aus editierbaren PowerPoint-Elementen: Texte, Flächen, Tabellen, Pfeile, Commit-Graphen aus Linien und Kreisen. Überschriften liegen in Titel-Platzhaltern, Logo, Fußzeile und Seitenzahl im Folienlayout, die Sprechernotizen in den Notizen. Jedes Modul ist ein eigener Abschnitt.
+Der Export lädt die erzeugten Deck-Dateien in Chrome, übernimmt das berechnete Layout und schreibt `slides/pptx/tag1.pptx`, `slides/pptx/tag2.pptx` und je Kapitel `slides/pptx/kapitel/<kapitel>.pptx`. Ein einzelnes Deck: `node export.js tag2` oder `node export.js kapitel/t2-09-integrieren`. Die Folien bestehen aus editierbaren PowerPoint-Elementen: Texte, Flächen, Tabellen, Pfeile, Commit-Graphen aus Linien und Kreisen. Überschriften liegen in Titel-Platzhaltern, Logo, Fußzeile und Seitenzahl im Folienlayout, die Sprechernotizen in den Notizen. Jedes Modul ist ein eigener Abschnitt.
 
 Schriften: Überschriften und Text verwenden Space Grotesk und Inter. Sind sie auf dem Rechner nicht installiert, ersetzt PowerPoint sie durch Calibri; das Layout bleibt dabei erhalten. Code steht in Consolas, weil ein proportionaler Ersatz die Einrückungen zerstören würde. Mit `PPTX_CODE_FONT="JetBrains Mono" npm run build` bleibt die Code-Schrift des Decks erhalten.
 
