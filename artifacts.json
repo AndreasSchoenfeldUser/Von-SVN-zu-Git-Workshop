@@ -1,0 +1,26 @@
+{
+  "agenda_doc": {
+    "title": "Von SVN zu Git – Git Grundlagen für SVN-Umsteiger",
+    "url": "https://claude.ai/artifact/CGsZJULWGf8HpK7FWd6Dan",
+    "slug": "5b4bd6af-a259-4269-a3aa-7d4e3dbf97ff",
+    "local_copy": "agenda/kursagenda.md"
+  },
+  "decks": {
+    "tag1": {
+      "title": "Von SVN zu Git – Tag 1: Allein mit Git",
+      "url": "https://claude.ai/artifact/Gjg7gTRsuddxotxoUK6dXs",
+      "slug": "7f6e6c7f-bdf5-4e73-acec-87e796f431d6",
+      "logo_blob": "/_blob/c8bbd1d863b96e8d96ffc7eb58fb5315",
+      "generator": "slides/generator/tag1.py",
+      "output": "slides/decks/tag1/project"
+    },
+    "tag2": {
+      "title": "Von SVN zu Git – Tag 2: Gemeinsam mit Git",
+      "url": "https://claude.ai/artifact/JbsyH1tNE4joQDUMmjNaXL",
+      "slug": "8e8a0e94-41ac-408a-a864-8c2f9c9e6c6b",
+      "logo_blob": "/_blob/4e7855006161d9eb10133a3a03df1cf3",
+      "generator": "slides/generator/tag2.py",
+      "output": "slides/decks/tag2/project"
+    }
+  }
+}

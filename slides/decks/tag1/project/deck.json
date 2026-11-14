@@ -1,0 +1,106 @@
+{
+ "v": 5,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-14T03:45:00Z"
+ },
+ "lists": "css",
+ "format": {
+  "v": 1,
+  "shared": [
+   "project/deck.css"
+  ]
+ },
+ "title": "Von SVN zu Git – Tag 1: Allein mit Git",
+ "order": [
+  "cover",
+  "ablauf",
+  "leitidee",
+  "projekt",
+  "m1",
+  "m1-zentral",
+  "m1-wechsel",
+  "m1-uebung",
+  "m2",
+  "m2-bereiche",
+  "m2-snapshots",
+  "m2-praxis",
+  "m2-uebung",
+  "m3",
+  "m3-zyklus",
+  "m3-statement",
+  "m3-start",
+  "m3-diff",
+  "m3-uebung",
+  "m4",
+  "m4-protokoll",
+  "m4-message",
+  "m4-ignore",
+  "m4-patch",
+  "m4-uebung",
+  "m5",
+  "m5-wege",
+  "m5-reset",
+  "m5-praxis",
+  "m5-uebung",
+  "m6",
+  "m6-zeiger",
+  "m6-merge",
+  "m6-praxis",
+  "m6-uebung",
+  "m7",
+  "m7-praxis",
+  "m7-uebung",
+  "abschluss"
+ ],
+ "cover": "cover",
+ "sections": {
+  "s1": {
+   "description": "Einführung: Kursablauf, Leitidee und Übungsprojekt",
+   "start": "cover"
+  },
+  "s2": {
+   "description": "Modul 01: Ausgangslage – wie arbeitet das Team heute mit SVN?",
+   "start": "m1"
+  },
+  "s3": {
+   "description": "Modul 02: Das Git-Modell – drei Bereiche, Snapshots und Commit-Hashes",
+   "start": "m2"
+  },
+  "s4": {
+   "description": "Modul 03: Arbeiten und festhalten – der lokale Arbeitszyklus",
+   "start": "m3"
+  },
+  "s5": {
+   "description": "Modul 04: In kleinen Schritten arbeiten – gute Commits und Commit Messages",
+   "start": "m4"
+  },
+  "s6": {
+   "description": "Modul 05: Sicher experimentieren – Änderungen zurücknehmen und parken",
+   "start": "m5"
+  },
+  "s7": {
+   "description": "Modul 06: Ein Branch pro Aufgabe – Branches als alltägliches Werkzeug",
+   "start": "m6"
+  },
+  "s8": {
+   "description": "Modul 07: Übung „Der kaputte Freitag“ – Fehlersuche in der Historie",
+   "start": "m7"
+  }
+ },
+ "faces": {
+  "space-grotesk": {
+   "family": "Space Grotesk",
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+  },
+  "inter": {
+   "family": "Inter",
+   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+  },
+  "jetbrains-mono": {
+   "family": "JetBrains Mono",
+   "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"
+  }
+ },
+ "designSystems": []
+}
