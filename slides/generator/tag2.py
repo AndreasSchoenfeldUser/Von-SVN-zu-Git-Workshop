@@ -491,6 +491,8 @@ uebung(d, "m14-uebung2", crumb, "Teil 2: Das erste Feature im neuen Zuhause", [
     scenario="Zwei der Aufgaben ändern bewusst dieselbe Stelle in application.yml. Ein Konflikt gehört zum Umzugstag dazu.",
     notes="Aufgabenliste: neue Zahlungsart, Anpassung der Stornofrist, Korrektur in der README, Preisfilter für die Reisesuche.")
 
+exec((HERE / "nachbereitung_module.py").read_text(encoding="utf-8"))
+
 # ---------- Modul 15 ----------
 crumb = M(15, "Abschluss")
 d.section("Modul 15: Abschluss – neuer Arbeitsablauf, Ausblick und Feedback",

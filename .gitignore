@@ -4,3 +4,6 @@ __pycache__/
 preview/
 *.tmp
 node_modules/
+
+# Sperrdateien von PowerPoint
+~$*

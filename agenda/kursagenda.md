@@ -96,6 +96,20 @@ Das optionale Modul (ca. 60 Minuten) stellt einen Workflow mit festen Freigaben 
 
 Die Rückführung von Release- und Hotfix-Branches nach develop ist eine Ergänzung zur Vorgabe. Ohne sie fehlen die Korrekturen im nächsten Release.
 
+## Zusatzmodul: Nachbereitung des Umzugs
+
+Das optionale Modul (ca. 60 Minuten) schließt an die Abschlussübung „Umzugstag“ (Modul 14) an. Es zeigt, wie das migrierte Repository aufgeräumt wird, bevor das Team damit arbeitet. Es eignet sich für Teams, deren SVN-Repository große Binärdateien, svn:externals oder mehrere Teilprojekte enthält.
+
+| Thema | Inhalte |
+| --- | --- |
+| Git LFS | Große Dateien in der Historie finden (`git lfs migrate info`), nach Git LFS verschieben (`git lfs migrate import`), Ergebnis prüfen (`git lfs ls-files`), neue Dateitypen mit `git lfs track` aufnehmen |
+| Submodule | Eine gemeinsame Bibliothek mit relativer URL einbinden, Submodule nach dem Klonen initialisieren, eine neue Version der Bibliothek bewusst übernehmen |
+| Repositories schneiden | Ein Verzeichnis mit seiner Historie als eigenes Repository abtrennen und anschließend aus dem ursprünglichen Repository entfernen (`git filter-branch`) |
+
+**Übung:** „Das migrierte Reiseportal aufräumen“ (35 Minuten).
+
+LFS-Migration und Schneiden schreiben die Historie um. Beides gehört deshalb direkt hinter die Migration, bevor das Team das Repository klont.
+
 ## Schulungsumgebung und Unterlagen
 
 Für jedes Training wird eine eigene Cloud-Umgebung bereitgestellt. Eine lokale Installation ist daher nicht erforderlich.

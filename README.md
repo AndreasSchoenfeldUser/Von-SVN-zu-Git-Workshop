@@ -7,7 +7,7 @@ Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (
 | Pfad | Inhalt |
 | --- | --- |
 | `agenda/kursagenda.md` | Kursagenda mit Lernzielen, Leitidee, Modulen beider Tage und Zusatzmodul |
-| `slides/generator/` | Python-Generator für die Slides: `common.py` (Stil und Bausteine), `tag1.py`, `tag2.py`, `workflow_module.py` (Zusatzmodul Git-Workflow) |
+| `slides/generator/` | Python-Generator für die Slides: `common.py` (Stil und Bausteine), `tag1.py`, `tag2.py`, `workflow_module.py` (Zusatzmodul Git-Workflow), `nachbereitung_module.py` (Zusatzmodul Nachbereitung des Umzugs) |
 | `slides/decks/tag1/`, `slides/decks/tag2/` | Erzeugte Gesamt-Decks je Tag (`deck.json`, `deck.css`, eine HTML-Datei je Slide) |
 | `slides/decks/kapitel/` | Ein Deck je Kapitel (Einführung, Module, Zusatzmodul), zum Beispiel `t1-03-arbeiten-und-festhalten` |
 | `slides/assets/` | Logo der Comquent Academy |
@@ -16,7 +16,7 @@ Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (
 | `tools/pptx/` | Export der Decks nach PowerPoint |
 | `artifacts.json` | Zuordnung zu den veröffentlichten Claude-Artefakten (Decks und Agenda) |
 
-Umfang: Tag 1 mit 39 Slides (Module 01–07), Tag 2 mit 60 Slides (Module 08–15 und Zusatzmodul Git-Workflow). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung und liegt zusätzlich als eigenes Deck vor (18 Kapitel).
+Umfang: Tag 1 mit 39 Slides (Module 01–07), Tag 2 mit 68 Slides (Module 08–15 sowie die Zusatzmodule Git-Workflow und Nachbereitung des Umzugs). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung und liegt zusätzlich als eigenes Deck vor (19 Kapitel).
 
 ## Slides erzeugen
 
@@ -27,7 +27,7 @@ python3 slides/generator/tag2.py
 
 Die Skripte schreiben das Gesamt-Deck des Tages nach `slides/decks/tag1/project` bzw. `slides/decks/tag2/project` und zusätzlich ein Deck je Kapitel nach `slides/decks/kapitel/<kapitel>/project`. Die Kapitel ergeben sich aus den Abschnitten (`d.section(...)`) in den Generator-Skripten; Verzeichnisname und Titel stehen dort beim jeweiligen Abschnitt. Die erzeugten Dateien sind Teil des Repositorys, damit Änderungen im Review sichtbar sind.
 
-Kapitel von Tag 1: `t1-00-einfuehrung`, `t1-01-auftakt` bis `t1-07-kaputter-freitag`. Kapitel von Tag 2: `t2-00-einfuehrung`, `t2-08-rueckblick` bis `t2-15-abschluss`, dazu `t2-12z-git-workflow` für das Zusatzmodul.
+Kapitel von Tag 1: `t1-00-einfuehrung`, `t1-01-auftakt` bis `t1-07-kaputter-freitag`. Kapitel von Tag 2: `t2-00-einfuehrung`, `t2-08-rueckblick` bis `t2-15-abschluss`, dazu `t2-12z-git-workflow` und `t2-14z-umzug-nachbereitung` für die Zusatzmodule.
 
 ## Vorschau
 
@@ -66,3 +66,4 @@ Die Decks sind als Claude-Artefakte vom Typ „Slides“ veröffentlicht (Links 
 - GitLab-Gruppen je Team mit geschütztem main
 - Übersicht des SVN-Repositorys für die Migrationsübung (trunk, drei Branches, zwölf Tags, externer Verweis, große Bild- und Videodateien)
 - Aufgabenliste für die Abschlussübung „Umzugstag“
+- Für das Zusatzmodul „Nachbereitung des Umzugs“: Repository `portal-common` in jeder Team-Gruppe, Verzeichnis `hotel-import` im SVN-Repository des Reiseportals

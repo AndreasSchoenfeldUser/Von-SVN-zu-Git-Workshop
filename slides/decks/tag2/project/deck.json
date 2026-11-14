@@ -69,6 +69,14 @@
   "m14-praxis",
   "m14-uebung1",
   "m14-uebung2",
+  "zn",
+  "zn-ueberblick",
+  "zn-lfs-info",
+  "zn-lfs-import",
+  "zn-sub-add",
+  "zn-sub-update",
+  "zn-schneiden",
+  "zn-uebung",
   "m15",
   "m15-ausblick",
   "m15-uebung",
@@ -113,6 +121,10 @@
    "start": "m14"
   },
   "s10": {
+   "description": "Zusatzmodul: Nachbereitung des Umzugs – Git LFS, Submodule und Repositories schneiden",
+   "start": "zn"
+  },
+  "s11": {
    "description": "Modul 15: Abschluss – neuer Arbeitsablauf, Ausblick und Feedback",
    "start": "m15"
   }
