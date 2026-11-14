@@ -22,6 +22,7 @@ Leitidee mit sechs Stationen: Aufgabe übernehmen, Arbeiten und festhalten, Teil
 - `slides/generator/common.py`: Stil (CSS), Farben, Schriften, Bausteine (`cover`, `divider`, `content`, `statement`, `card`, `cards`, `table`, `praxis`, `uebung`, `stations`, `graph`, `workflow`).
 - `slides/generator/tag1.py`, `tag2.py`: Inhalte je Tag. `tag2.py` bindet `workflow_module.py` (Zusatzmodul) nach Modul 12 ein.
 - Ausgabe: `slides/decks/<tag>/project/` mit `deck.json`, `deck.css`, `slides/<id>.html`. Nach jeder Änderung am Generator neu erzeugen und die Ausgabe mit committen.
+- PowerPoint: `tools/pptx/export.js` rendert die Deck-Dateien in Chrome und baut daraus `slides/pptx/<tag>.pptx` (`cd tools/pptx && npm run build`). Nach jeder Neuerzeugung der Decks ebenfalls neu erzeugen und mit committen. Der Export kennt die Bausteine aus `common.py` nicht einzeln, sondern übersetzt das berechnete Layout; neue CSS-Effekte (Verläufe, Schatten, Transformationen) dort nachziehen.
 - `agenda/kursagenda.md`: Kursagenda. Bei Änderungen an Modulen oder Zeiten mitpflegen.
 
 ## Slide-Konventionen

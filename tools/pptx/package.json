@@ -1,0 +1,13 @@
+{
+  "name": "svn-zu-git-pptx",
+  "private": true,
+  "description": "Export der Slide-Decks nach PowerPoint",
+  "scripts": {
+    "build": "node export.js tag1 && node export.js tag2"
+  },
+  "dependencies": {
+    "@phosphor-icons/core": "^2.1.1",
+    "playwright": "^1.65.1",
+    "pptxgenjs": "^4.0.1"
+  }
+}

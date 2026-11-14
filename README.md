@@ -10,7 +10,9 @@ Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (
 | `slides/generator/` | Python-Generator für die Slides: `common.py` (Stil und Bausteine), `tag1.py`, `tag2.py`, `workflow_module.py` (Zusatzmodul Git-Workflow) |
 | `slides/decks/tag1/`, `slides/decks/tag2/` | Erzeugte Deck-Dateien (`deck.json`, `deck.css`, eine HTML-Datei je Slide) |
 | `slides/assets/` | Logo der Comquent Academy |
+| `slides/pptx/` | PowerPoint-Fassung beider Tage (`tag1.pptx`, `tag2.pptx`), aus den Deck-Dateien erzeugt |
 | `tools/preview/` | Lokale Vorschau der Slides als PNG |
+| `tools/pptx/` | Export der Decks nach PowerPoint |
 | `artifacts.json` | Zuordnung zu den veröffentlichten Claude-Artefakten (Decks und Agenda) |
 
 Umfang: Tag 1 mit 39 Slides (Module 01–07), Tag 2 mit 55 Slides (Module 08–15 und Zusatzmodul Git-Workflow). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung.
@@ -34,6 +36,22 @@ python3 tools/preview/contact_sheet.py preview/tag2
 ```
 
 Die Vorschau lädt keine Web-Fonts und keine hochgeladenen Bilder. Das Logo erscheint dort nur als Platzhalter.
+
+## PowerPoint erzeugen
+
+Voraussetzung: Node.js und Google Chrome. Einmalig die Abhängigkeiten installieren:
+
+```bash
+cd tools/pptx
+npm install
+npm run build
+```
+
+Der Export lädt die erzeugten Deck-Dateien in Chrome, übernimmt das berechnete Layout und schreibt nach `slides/pptx/tag1.pptx` und `slides/pptx/tag2.pptx`. Ein einzelner Tag: `node export.js tag2`. Die Folien bestehen aus editierbaren PowerPoint-Elementen: Texte, Flächen, Tabellen, Pfeile, Commit-Graphen aus Linien und Kreisen. Überschriften liegen in Titel-Platzhaltern, Logo, Fußzeile und Seitenzahl im Folienlayout, die Sprechernotizen in den Notizen. Jedes Modul ist ein eigener Abschnitt.
+
+Schriften: Überschriften und Text verwenden Space Grotesk und Inter. Sind sie auf dem Rechner nicht installiert, ersetzt PowerPoint sie durch Calibri; das Layout bleibt dabei erhalten. Code steht in Consolas, weil ein proportionaler Ersatz die Einrückungen zerstören würde. Mit `PPTX_CODE_FONT="JetBrains Mono" npm run build` bleibt die Code-Schrift des Decks erhalten.
+
+Nach Änderungen am Generator die PowerPoint-Dateien neu erzeugen und mit committen.
 
 ## Veröffentlichung
 
