@@ -50,14 +50,14 @@ content(d, "m8-wiederholung", "Theorie", crumb, "Vier Grundlagen aus Tag 1",
 
 praxis(d, "m8-praxis", crumb, "Die Historie von gestern lesen", [
     "$ git log --oneline --graph --all -12",
-    "*   d4e5f6a Merge branch 'linie2/temperatur'",
+    "*   d4e5f6a Merge branch 'config/reservierung'",
     "|\\",
-    "| * b2c3d4e Temperaturgrenze Linie 2 anpassen",
-    "* | a1b2c3d Rezept Orangensaft ergänzen",
+    "| * b2c3d4e Reservierungsdauer auf 15 Minuten senken",
+    "* | a1b2c3d Kundenbewertungen ergänzen",
     "|/",
-    "* 4b5c6d7 Revert \"Temperaturgrenze anheben\"",
-    "* 9a7b6c5 Füllmenge Apfelsaft auf 750 ml",
-    "* 3f2a9c1 Grundkonfiguration anlegen",
+    "* 4b5c6d7 Revert \"Stornofrist auf 30 Tage erhöhen\"",
+    "* 9a7b6c5 Trefferzahl der Reisesuche begrenzen",
+    "* 3f2a9c1 Projektgerüst anlegen",
 ], [
     ("--graph", "Zeichnet Branches und Merges als Linien."),
     ("Merge-Commit", "Die Stelle, an der zwei Aufgaben zusammengeführt wurden."),
@@ -82,7 +82,7 @@ content(d, "m9-konflikt", "Theorie", crumb, "Wann entsteht ein Konflikt?",
         '<div class="split">' +
         graph(960, 360, [(90, 240, "A"), (300, 240, "B"), (510, 240, "C"), (510, 100, "D"), (740, 240, "M")],
               [(0, 1), (1, 2), (1, 3), (2, 4), (3, 4)],
-              [(510, 300, "main: 85 °C", "main"), (510, 30, "linie2: 82 °C", "br"), (740, 300, "Konflikt", "head")], merge=(4,)) +
+              [(510, 300, "main: 20 Treffer", "main"), (510, 30, "suche: 25 Treffer", "br"), (740, 300, "Konflikt", "head")], merge=(4,)) +
         notes_col([("Automatisch", "Ändern beide Linien verschiedene Stellen, führt Git sie selbst zusammen."),
                    ("Konflikt", "Ändern beide dieselbe Stelle, entscheidet ein Mensch."),
                    ("Wichtig", "Ein Konflikt ist kein Fehler, sondern eine Rückfrage.")]) +
@@ -101,28 +101,28 @@ content(d, "m9-schritte", "Theorie", crumb, "Einen Konflikt in vier Schritten l�
         '</div><p class="under">Jederzeit möglich: den Merge abbrechen und zum Stand davor zurückkehren.</p>',
         "Der zweite Schritt ist der wichtigste. Wer nur die eigene Seite übernimmt, ohne die andere zu verstehen, verliert die Arbeit eines Kollegen.")
 
-praxis(d, "m9-praxis", crumb, "Konflikt in der Anlagenkonfiguration", [
-    "$ git merge linie2/temperatur",
-    "CONFLICT (content): Merge conflict in config/anlage.yaml",
+praxis(d, "m9-praxis", crumb, "Konflikt in der Anwendungskonfiguration", [
+    "$ git merge suche/trefferzahl",
+    "CONFLICT (content): Merge conflict in …/application.yml",
     "Automatic merge failed; fix conflicts and then commit.",
-    "# Inhalt von config/anlage.yaml:",
+    "# Inhalt von application.yml:",
     "! <<<<<<< HEAD",
-    "temperatur_max: 85",
+    "    max-ergebnisse: 20",
     "! =======",
-    "temperatur_max: 82",
-    "! >>>>>>> linie2/temperatur",
-    "$ git add config/anlage.yaml",
+    "    max-ergebnisse: 25",
+    "! >>>>>>> suche/trefferzahl",
+    "$ git add src/main/resources/application.yml",
     "$ git commit  # Merge abschließen",
 ], [
     ("<<<<<<< HEAD", "Ihr aktueller Stand."),
-    (">>>>>>> linie2/…", "Der Stand, den Sie hereinholen."),
+    (">>>>>>> suche/…", "Der Stand, den Sie hereinholen."),
     ("git merge --abort", "Bricht ab und stellt den Stand vor dem Merge wieder her."),
 ], "Zeigen Sie zusätzlich ein grafisches Merge-Werkzeug, etwa die Konfliktansicht der Entwicklungsumgebung. Die Marker im Text bleiben aber die Grundlage.")
 
 uebung(d, "m9-uebung", crumb, "Konflikte gezielt herbeiführen", [
-    "Legen Sie zwei Branches an und ändern Sie in beiden dieselbe Zeile in <b>config/anlage.yaml</b>.",
+    "Legen Sie zwei Branches an und ändern Sie in beiden dieselbe Zeile in <b>application.yml</b>.",
     "Führen Sie die Branches zusammen und lösen Sie den Konflikt.",
-    "Wiederholen Sie das mit einem Rezept, ändern Sie diesmal aber benachbarte Zeilen. Was passiert?",
+    "Wiederholen Sie das mit einer Java-Klasse, ändern Sie diesmal aber benachbarte Zeilen. Was passiert?",
     "Starten Sie einen weiteren Merge und brechen Sie ihn bewusst ab.",
 ], "30 Minuten", "Partnerarbeit", "Zwei gelöste Konflikte und ein abgebrochener Merge in der Historie.",
     notes="Benachbarte Zeilen führen in der Regel ebenfalls zu einem Konflikt, weil Git Änderungen abschnittsweise vergleicht. Gute Gelegenheit, über kleine, fokussierte Commits zu sprechen.")
@@ -157,12 +157,12 @@ statement(d, "m10-statement", "MERKSATZ", "Veröffentlichen ist eine Entscheidun
           "Verbindung zu Modul 05: Alles vor dem push darf umgeschrieben werden, alles danach wird mit neuen Commits korrigiert.")
 
 praxis(d, "m10-praxis", crumb, "Mit dem Team-Repository arbeiten", [
-    "$ git clone https://gitlab.example.com/team/anlage.git",
-    "$ cd anlage",
-    "$ git switch -c rezept/multivitamin",
-    "$ git add rezepte/multivitamin.yaml",
-    "$ git commit -m \"Rezept Multivitamin ergänzen\"",
-    "$ git push -u origin rezept/multivitamin",
+    "$ git clone https://gitlab.example.com/team/reiseportal",
+    "$ cd reiseportal",
+    "$ git switch -c feature/gutscheine",
+    "$ git add src/main/java/de/reiseportal/Gutschein.java",
+    "$ git commit -m \"Gutscheine bei der Buchung einlösen\"",
+    "$ git push -u origin feature/gutscheine",
     "",
     "$ git fetch  # Was gibt es Neues?",
     "$ git log --oneline main..origin/main",
@@ -176,7 +176,7 @@ praxis(d, "m10-praxis", crumb, "Mit dem Team-Repository arbeiten", [
 
 uebung(d, "m10-uebung", crumb, "Erste Schritte im Team-Repository", [
     "Klonen Sie das Repository Ihres Teams aus GitLab.",
-    "Legen Sie einen eigenen Branch an, ergänzen Sie ein Rezept und teilen Sie den Branch.",
+    "Legen Sie einen eigenen Branch an, ergänzen Sie eine kleine Funktion und teilen Sie den Branch.",
     "Holen Sie die Branches Ihrer Teamkollegen ab und sehen Sie sich deren Commits an.",
     "Ein Teammitglied ändert main in GitLab. Holen Sie die Änderung ab und integrieren Sie sie.",
 ], "35 Minuten", "Teams mit 3 bis 4 Personen", "Jede Person hat einen geteilten Branch; alle lokalen main-Branches sind auf dem gleichen Stand.",
@@ -210,7 +210,7 @@ content(d, "m11-review", "Theorie", crumb, "Gute Reviews entstehen auf beiden Se
         "Review ist kein Kontrollinstrument, sondern geteiltes Wissen: Nach einem Review kennen mindestens zwei Personen jede Änderung.")
 
 praxis(d, "m11-praxis", crumb, "Vom Push zum Merge Request", [
-    "$ git push -u origin rezept/multivitamin",
+    "$ git push -u origin feature/gutscheine",
     "remote: To create a merge request, visit:",
     "remote: https://gitlab.example.com/…/merge_requests/new",
     "",
@@ -219,7 +219,7 @@ praxis(d, "m11-praxis", crumb, "Vom Push zum Merge Request", [
     ">   -o merge_request.target=main",
     "",
     "# Anmerkung aus dem Review umsetzen:",
-    "$ git commit -am \"Zuckergehalt laut Review korrigieren\"",
+    "$ git commit -am \"Ablaufdatum laut Review prüfen\"",
     "$ git push  # Merge Request aktualisiert sich",
 ], [
     ("Link im Push", "GitLab bietet nach dem Push direkt an, einen Merge Request anzulegen."),
@@ -255,21 +255,21 @@ content(d, "m12-rebase", "Theorie", crumb, "Rebase oder Merge: zwei Arten, Histo
         '<div class="gpanel"><p class="gcap">Merge</p>' +
         graph(720, 300, [(70, 200, "A"), (250, 200, "B"), (430, 200, "C"), (430, 80, "D"), (620, 200, "M")],
               [(0, 1), (1, 2), (1, 3), (2, 4), (3, 4)],
-              [(620, 250, "main", "main"), (430, 10, "rezept", "br")], merge=(4,)) +
+              [(620, 250, "main", "main"), (430, 10, "feature", "br")], merge=(4,)) +
         '<p class="ct">Die parallele Entwicklung bleibt sichtbar.</p></div>'
         '<div class="gpanel"><p class="gcap">Rebase</p>' +
         graph(720, 300, [(70, 150, "A"), (250, 150, "B"), (430, 150, "C"), (610, 150, "D′")],
               [(0, 1), (1, 2), (2, 3)],
-              [(430, 210, "main", "main"), (610, 210, "rezept", "br")]) +
+              [(430, 210, "main", "main"), (610, 210, "feature", "br")]) +
         '<p class="ct">Der Branch wird auf den neuen Stand gesetzt. Die Historie bleibt gerade.</p></div>'
         '</div><p class="under">Regel: Nur eigene, noch nicht von anderen genutzte Branches rebasen.</p>',
         "Rebase erzeugt neue Commits (D′). Wer bereits auf D aufgebaut hat, bekommt Probleme. Deshalb gilt die Regel aus Modul 05 auch hier: Geteiltes nicht umschreiben.")
 
 praxis(d, "m12-praxis", crumb, "Den eigenen Branch aktualisieren", [
-    "$ git switch rezept/multivitamin",
+    "$ git switch feature/gutscheine",
     "$ git fetch",
     "$ git rebase origin/main",
-    "Successfully rebased and updated refs/heads/rezept/…",
+    "Successfully rebased and updated refs/heads/feature/…",
     "$ git push --force-with-lease",
     "",
     "# Alternativ mit Merge:",
@@ -302,7 +302,7 @@ content(d, "m13-fragen", "Theorie", crumb, "Vier Fragen vor dem Umzug",
         cards(2, [
             card("Wie viel Historie?", "Vollständig übernehmen oder ab einem Stichtag neu beginnen?", k="HISTORIE"),
             card("Welche Struktur?", "Aus trunk, branches und tags werden Branches und Tags.", k="STRUKTUR"),
-            card("Welche Abhängigkeiten?", "Verweise auf andere Repositories als Submodule oder Pakete abbilden.", k="ABHÄNGIGKEITEN"),
+            card("Welche Abhängigkeiten?", "Verweise auf andere Repositories als Maven-Abhängigkeiten oder Submodule abbilden.", k="ABHÄNGIGKEITEN"),
             card("Welche großen Dateien?", "Große Binärdateien mit Git LFS verwalten, damit Klonen schnell bleibt.", k="BINÄRDATEIEN"),
         ]),
         "Dazu kommt immer die Zuordnung der SVN-Benutzernamen zu vollständigen Git-Identitäten mit Name und E-Mail-Adresse.")
@@ -324,8 +324,8 @@ praxis(d, "m13-praxis", crumb, "Migration mit git svn", [
     "",
     "$ git svn clone --stdlayout \\",
     ">   --authors-file=authors.txt \\",
-    ">   https://svn.example.com/anlage anlage",
-    "$ cd anlage",
+    ">   https://svn.example.com/reiseportal reiseportal",
+    "$ cd reiseportal",
     "$ git branch -a  # übernommene SVN-Branches",
     "$ git remote add origin <GitLab-URL>",
     "$ git push -u origin --all",
@@ -336,19 +336,19 @@ praxis(d, "m13-praxis", crumb, "Migration mit git svn", [
     ("Nacharbeit", "SVN-Tags kommen als Branches an und werden in echte Git-Tags umgewandelt."),
 ], "Comquent bringt für Migrationen vorgefertigte, in Projekten erprobte Skripte mit, die unter anderem die Umwandlung der Tags übernehmen. Im Kurs zeigen wir den Grundablauf mit git svn.")
 
-uebung(d, "m13-uebung", crumb, "Ein Migrationsplan für die Abfüllanlage", [
-    "Analysieren Sie die vorbereitete Übersicht des SVN-Repositorys der Abfüllanlage.",
+uebung(d, "m13-uebung", crumb, "Ein Migrationsplan für das Reiseportal", [
+    "Analysieren Sie die vorbereitete Übersicht des SVN-Repositorys des Reiseportals.",
     "Beantworten Sie die vier Fragen: Historie, Struktur, Abhängigkeiten, Binärdateien.",
     "Erstellen Sie die Autorenzuordnung für alle beteiligten SVN-Benutzer.",
     "Legen Sie Ablauf und Stichtag für den Umzug fest.",
 ], "25 Minuten", "Teams mit 3 bis 4 Personen", "Ein Migrationsplan auf einer Seite, der in der Abschlussübung umgesetzt wird.",
-    notes="Die Übersicht enthält: trunk, drei Branches, zwölf Tags, einen externen Verweis auf eine gemeinsame Bibliothek und einen Ordner mit großen CAD-Dateien.")
+    notes="Die Übersicht enthält: trunk, drei Branches, zwölf Tags, einen externen Verweis (svn:externals) auf eine gemeinsame Bibliothek und einen Ordner mit großen Bild- und Videodateien der Reiseziele.")
 
 # ---------- Modul 14 ----------
 crumb = M(14, "Umzugstag")
 d.section("Modul 14: Abschlussübung „Umzugstag“ – alle sechs Stationen im Team")
 divider(d, "m14", "14", "Abschlussübung: Umzugstag",
-        "Wir ziehen das SVN-Repository der Abfüllanlage nach GitLab um und liefern das erste Feature im neuen Zuhause aus.",
+        "Wir ziehen das SVN-Repository des Reiseportals nach GitLab um und liefern das erste Feature im neuen Zuhause aus.",
         "15:30 – 16:45 UHR · STATION 1 BIS 6")
 
 content(d, "m14-ablauf", "Theorie", crumb, "Die Abschlussübung im Überblick",
@@ -371,12 +371,12 @@ praxis(d, "m14-praxis", crumb, "Einen Release-Stand markieren", [
 ], "Tags sind unveränderliche Markierungen. Sie werden in Modul 15 beim Ausblick auf CI/CD wieder aufgegriffen.")
 
 uebung(d, "m14-uebung1", crumb, "Teil 1: Der Umzug", [
-    "Migrieren Sie das SVN-Repository der Abfüllanlage nach Ihrem Plan, einschließlich Autoren, Branches und Tags.",
+    "Migrieren Sie das SVN-Repository des Reiseportals nach Ihrem Plan, einschließlich Autoren, Branches und Tags.",
     "Prüfen Sie das Ergebnis: Stimmen Historie, Branches und Tags?",
     "Teilen Sie das Repository in der GitLab-Gruppe Ihres Teams.",
     "Schützen Sie main und hinterlegen Sie Ihre CONTRIBUTING.md.",
 ], "35 Minuten", "Teams mit 3 bis 4 Personen", "Ein vollständig migriertes, geschütztes Repository in GitLab.",
-    notes="Wer schneller fertig ist, migriert zusätzlich die großen CAD-Dateien nach Git LFS.")
+    notes="Wer schneller fertig ist, migriert zusätzlich die großen Bild- und Videodateien nach Git LFS.")
 
 uebung(d, "m14-uebung2", crumb, "Teil 2: Das erste Feature im neuen Zuhause", [
     "Jede Person übernimmt eine Aufgabe aus der Liste und arbeitet auf einem eigenen Branch.",
@@ -384,8 +384,8 @@ uebung(d, "m14-uebung2", crumb, "Teil 2: Das erste Feature im neuen Zuhause", [
     "Prüfen Sie gegenseitig, lösen Sie auftretende Konflikte und führen Sie zusammen.",
     "Markieren Sie den gemeinsamen Stand als <b>v1.0</b>.",
 ], "40 Minuten", "Teams mit 3 bis 4 Personen", "Ein Release-Tag v1.0 mit allen Aufgaben des Teams.",
-    scenario="Zwei der Aufgaben ändern bewusst dieselbe Stelle in config/anlage.yaml. Ein Konflikt gehört zum Umzugstag dazu.",
-    notes="Aufgabenliste: neues Rezept, Anpassung der Temperaturgrenze, Korrektur in der Doku, Erweiterung des SPS-Bausteins.")
+    scenario="Zwei der Aufgaben ändern bewusst dieselbe Stelle in application.yml. Ein Konflikt gehört zum Umzugstag dazu.",
+    notes="Aufgabenliste: neue Zahlungsart, Anpassung der Stornofrist, Korrektur in der README, Preisfilter für die Reisesuche.")
 
 # ---------- Modul 15 ----------
 crumb = M(15, "Abschluss")

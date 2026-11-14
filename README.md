@@ -1,6 +1,6 @@
 # Von SVN zu Git – Git Grundlagen für SVN-Umsteiger
 
-Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (SVN) auf Git umsteigen. Der Kurs folgt dem Weg einer Änderung in sechs Stationen statt einer Befehlsreferenz. Ein durchgehendes Übungsprojekt (die Steuerungskonfiguration einer erfundenen Abfüllanlage) zieht am Ende von Tag 2 von SVN nach GitLab um.
+Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (SVN) auf Git umsteigen. Der Kurs folgt dem Weg einer Änderung in sechs Stationen statt einer Befehlsreferenz. Ein durchgehendes Übungsprojekt (das Reiseportal eines erfundenen Reiseveranstalters, eine Java-Webanwendung) zieht am Ende von Tag 2 von SVN nach GitLab um.
 
 ## Inhalt des Repositorys
 
@@ -59,7 +59,7 @@ Die Decks sind als Claude-Artefakte vom Typ „Slides“ veröffentlicht (Links 
 
 ## Offene Punkte für die Schulungsumgebung
 
-- Übungsstände `modul04` und `freitag` im Übungs-Repository der Abfüllanlage
+- Übungsstände `modul04` und `freitag` im Übungs-Repository des Reiseportals
 - GitLab-Gruppen je Team mit geschütztem main
-- Übersicht des SVN-Repositorys für die Migrationsübung (trunk, drei Branches, zwölf Tags, externer Verweis, CAD-Dateien)
+- Übersicht des SVN-Repositorys für die Migrationsübung (trunk, drei Branches, zwölf Tags, externer Verweis, große Bild- und Videodateien)
 - Aufgabenliste für die Abschlussübung „Umzugstag“

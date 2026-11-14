@@ -33,9 +33,9 @@ Der Kurs folgt dem Weg einer Änderung durch den Entwicklungsalltag. An jeder St
 5. **Integrieren:** Zusammenführen geschieht gezielt und sichtbar, nicht nebenbei beim Aktualisieren.
 6. **Ausliefern:** Ein geprüfter Stand wird markiert und an die Pipeline übergeben.
 
-## Roter Faden: der Umzug der Abfüllanlage
+## Roter Faden: der Umzug des Reiseportals
 
-Alle Übungen bauen auf einem gemeinsamen Projekt auf: der Steuerungskonfiguration einer erfundenen Abfüllanlage, die seit Jahren in einem SVN-Repository gepflegt wird.
+Alle Übungen bauen auf einem gemeinsamen Projekt auf: dem Reiseportal eines erfundenen Reiseveranstalters, einer Java-Webanwendung für die Online-Buchung von Reisen, die seit Jahren in einem SVN-Repository gepflegt wird.
 
 - **Zum Auftakt** skizzieren die Teilnehmenden ihren heutigen Arbeitsablauf mit SVN – von der Aufgabe bis zur Auslieferung.
 - **Tag 1 – Allein mit Git:** Die Stationen 1 und 2 im eigenen, lokalen Repository.
@@ -57,7 +57,7 @@ Der erste Tag behandelt die Stationen „Aufgabe übernehmen“ und „Arbeiten 
 | 14:00 | Sicher experimentieren | Änderungen zurücknehmen, Zwischenstände parken, frühere Stände ansehen – lokale Fehler bleiben folgenlos für das Team |
 | 15:15 | Pause | |
 | 15:30 | Ein Branch pro Aufgabe | Branches als alltägliches Werkzeug; parallel an mehreren Aufgaben arbeiten und Ergebnisse zusammenführen |
-| 16:30 | Übung „Der kaputte Freitag“ | In der Historie den Schritt finden, der die Anlage lahmgelegt hat, und ihn gezielt zurücknehmen |
+| 16:30 | Übung „Der kaputte Freitag“ | In der Historie den Schritt finden, der die Buchungsstrecke lahmgelegt hat, und ihn gezielt zurücknehmen |
 | 17:00 | Ende | |
 
 ## Tag 2: Gemeinsam mit Git
@@ -75,7 +75,7 @@ Der zweite Tag behandelt die Stationen „Teilen“ bis „Ausliefern“ und end
 | 13:45 | Den Teamablauf vereinbaren | Branching-Strategien wie GitLab Flow oder Trunk-based Development; Rebase oder Merge; Spielregeln für das eigene Team |
 | 14:30 | Pause | |
 | 14:45 | Den Umzug planen | Migration mit Historie: Projektstruktur, Abhängigkeiten zu anderen Repositories, große Binärdateien, Übergangsphase im Team |
-| 15:30 | Abschlussübung „Umzugstag“ | Die Teams ziehen das SVN-Repository der Abfüllanlage nach GitLab um, durchlaufen alle sechs Stationen mit einem Feature und markieren den ersten Release-Stand |
+| 15:30 | Abschlussübung „Umzugstag“ | Die Teams ziehen das SVN-Repository des Reiseportals nach GitLab um, durchlaufen alle sechs Stationen mit einem Feature und markieren den ersten Release-Stand |
 | 16:45 | Abschluss | Neuer Arbeitsablauf neben der Skizze vom Auftakt; Ausblick auf CI/CD; Feedback |
 | 17:00 | Ende | |
 

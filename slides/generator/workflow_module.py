@@ -62,7 +62,7 @@ re_ = [("M0", "M1", "seq"), ("M0", "D0", "branch"), ("D0", "D1", "seq"), ("D1", 
 rt = [("M0", "v1.0.0", "above", 0, ""), ("D1", "v1.1.0-dev.1", "below", 0, ""), ("R2", "v1.1.0", "above", -50, "")]
 content(d, "zw-release", "Theorie", crumb, "Entwicklungsreleases und Release-Branches",
         '<div class="split">' + workflow(1000, 400, rl, rn, re_, rt, x0=170) +
-        notes_col([("Entwicklungsrelease", "Ein erreichter Stand wird auf develop getaggt, etwa für Tests an der Anlage."),
+        notes_col([("Entwicklungsrelease", "Ein erreichter Stand wird auf develop getaggt, etwa für Tests in der Testumgebung."),
                    ("Release festigen", "Im Release-Branch nur noch Korrekturen, keine neuen Funktionen."),
                    ("Ausliefern", "Den Auslieferungsstand taggen und per Merge Request nach main bringen.")]) + "</div>",
         "Ein Release-Branch ist optional. Er lohnt sich, wenn die Stabilisierung Zeit braucht und develop parallel weiterlaufen soll. Korrekturen aus dem Release-Branch gehen zurück nach develop.")
@@ -103,14 +103,14 @@ content(d, "zw-eignung", "Theorie", crumb, "Wann passt dieser Workflow?",
             card("Das kostet es", k="AUFWAND", icon="Warning",
                  items=["Mehr langlebige Branches und Merges", "Disziplin bei der Rückführung nach develop", "Längere Wege bis zur Auslieferung", "Für kontinuierliche Auslieferung eher zu schwer"]),
         ]),
-        "Vergleich mit Modul 12: GitLab Flow und Trunk-based Development sind leichter, passen aber weniger gut zu festen Freigabezyklen, etwa bei Steuerungssoftware für Anlagen.")
+        "Vergleich mit Modul 12: GitLab Flow und Trunk-based Development sind leichter, passen aber weniger gut zu festen Freigabezyklen, etwa wenn der Fachbereich jedes Release vor der Auslieferung abnimmt.")
 
 praxis(d, "zw-praxis-feature", crumb, "Feature bis zum Entwicklungsrelease", [
     "$ git switch develop && git pull",
-    "$ git switch -c feature/rezept-multivitamin",
-    "$ git add rezepte/multivitamin.yaml",
-    "$ git commit -m \"Rezept Multivitamin ergänzen\"",
-    "$ git push -u origin feature/rezept-multivitamin",
+    "$ git switch -c feature/preisalarm",
+    "$ git add src/main/java/de/reiseportal/Preisalarm.java",
+    "$ git commit -m \"Preisalarm für Reiseangebote ergänzen\"",
+    "$ git push -u origin feature/preisalarm",
     "# Merge Request: feature/… → develop",
     "",
     "# Nach dem Merge: Entwicklungsrelease taggen",
@@ -142,9 +142,9 @@ praxis(d, "zw-praxis-release", crumb, "Ein Release festigen und ausliefern", [
 
 praxis(d, "zw-praxis-hotfix", crumb, "Ein Hotfix für die Produktion", [
     "$ git switch main && git pull",
-    "$ git switch -c hotfix/1.1.1-wechselzeit",
-    "$ git commit -am \"Wechselzeit Orangensaft korrigieren\"",
-    "$ git push -u origin hotfix/1.1.1-wechselzeit",
+    "$ git switch -c hotfix/1.1.1-preisrundung",
+    "$ git commit -am \"Rundung der Reisepreise korrigieren\"",
+    "$ git push -u origin hotfix/1.1.1-preisrundung",
     "# Merge Request: hotfix/… → main",
     "",
     "$ git switch main && git pull",

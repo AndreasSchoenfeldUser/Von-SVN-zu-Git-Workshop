@@ -8,7 +8,7 @@ Training „Von SVN zu Git – Git Grundlagen für SVN-Umsteiger“ der Comquent
 
 Didaktischer Grundsatz: Die Teilnehmenden werden über den Arbeitsablauf an Git herangeführt, nicht über eine Wort-für-Wort-Übersetzung von SVN-Befehlen. Keine Gegenüberstellungstabellen „SVN-Befehl → Git-Befehl“. Prozessvergleiche (wie organisiert Git einen Schritt anders) sind erwünscht.
 
-Leitidee mit sechs Stationen: Aufgabe übernehmen, Arbeiten und festhalten, Teilen, Prüfen lassen, Integrieren, Ausliefern. Tag 1 behandelt die Stationen 1–2, Tag 2 die Stationen 3–6. Roter Faden ist die Abfüllanlage (Dateien `config/anlage.yaml`, `rezepte/*.yaml`, `sps/abfueller.st`, `doku/README.md`).
+Leitidee mit sechs Stationen: Aufgabe übernehmen, Arbeiten und festhalten, Teilen, Prüfen lassen, Integrieren, Ausliefern. Tag 1 behandelt die Stationen 1–2, Tag 2 die Stationen 3–6. Roter Faden ist das Reiseportal, eine Java-Webanwendung (Maven, Spring Boot) eines erfundenen Reiseveranstalters: `pom.xml`, Code unter `src/main/java/de/reiseportal/`, Konfiguration in `src/main/resources/application.yml` (Trefferzahl der Suche, Stornofrist, Reservierungsdauer, Timeout des Zahlungsdienstes), Tests unter `src/test/java/`. Neue Funktionen entstehen auf Branches wie `feature/merkliste`.
 
 ## Sprache und Ton
 
