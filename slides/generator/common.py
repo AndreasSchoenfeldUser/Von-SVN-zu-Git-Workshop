@@ -197,6 +197,10 @@ def _write_deck(root, title, slides, sections):
         json.dump(idx, f, ensure_ascii=False, indent=1)
     with open(os.path.join(root, "project", "deck.css"), "w") as f:
         f.write(CSS)
+    keep = {sid + ".html" for sid, _ in slides}
+    for name in os.listdir(os.path.join(root, "project", "slides")):
+        if name.endswith(".html") and name not in keep:  # Slides, die es nicht mehr gibt
+            os.remove(os.path.join(root, "project", "slides", name))
     for sid, h in slides:
         with open(os.path.join(root, "project", "slides", sid + ".html"), "w") as f:
             f.write(h)

@@ -74,7 +74,7 @@ Der zweite Tag behandelt die Stationen „Teilen“ bis „Ausliefern“ und end
 | 13:00 | Gemeinsam prüfen | Merge Requests und Code Review in GitLab; die Hauptlinie mit Protected Branches schützen |
 | 13:45 | Den Teamablauf vereinbaren | Branching-Strategien wie GitLab Flow oder Trunk-based Development; Rebase oder Merge; Spielregeln für das eigene Team |
 | 14:30 | Pause | |
-| 14:45 | Den Umzug planen | Migration mit Historie: Projektstruktur, Abhängigkeiten zu anderen Repositories, große Binärdateien, Übergangsphase im Team |
+| 14:45 | Den Umzug planen | Migration mit Historie: Projektstruktur, Abhängigkeiten zu anderen Repositories, große Binärdateien; Autoren ermitteln und zuordnen, schrittweise mit git svn migrieren, Tags und Branches übernehmen, bis zum Stichtag mit SVN abgleichen |
 | 15:30 | Abschlussübung „Umzugstag“ | Die Teams ziehen das SVN-Repository des Reiseportals nach GitLab um, durchlaufen alle sechs Stationen mit einem Feature und markieren den ersten Release-Stand |
 | 16:45 | Abschluss | Neuer Arbeitsablauf neben der Skizze vom Auftakt; Ausblick auf CI/CD; Feedback |
 | 17:00 | Ende | |

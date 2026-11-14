@@ -16,7 +16,7 @@ Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (
 | `tools/pptx/` | Export der Decks nach PowerPoint |
 | `artifacts.json` | Zuordnung zu den veröffentlichten Claude-Artefakten (Decks und Agenda) |
 
-Umfang: Tag 1 mit 39 Slides (Module 01–07), Tag 2 mit 55 Slides (Module 08–15 und Zusatzmodul Git-Workflow). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung und liegt zusätzlich als eigenes Deck vor (18 Kapitel).
+Umfang: Tag 1 mit 39 Slides (Module 01–07), Tag 2 mit 60 Slides (Module 08–15 und Zusatzmodul Git-Workflow). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung und liegt zusätzlich als eigenes Deck vor (18 Kapitel).
 
 ## Slides erzeugen
 

@@ -325,23 +325,119 @@ content(d, "m13-ablauf", "Theorie", crumb, "Ablauf einer Migration",
         ]),
         "Der Probelauf ist der wichtigste Schritt. Er zeigt, ob Branches, Tags und Autoren korrekt übernommen werden, ohne dass das Team schon umziehen muss.")
 
-praxis(d, "m13-praxis", crumb, "Migration mit git svn", [
-    "# authors.txt: SVN-Benutzer zu Git-Identität",
-    "mmuster = Max Muster <max.muster@example.com>",
-    "",
-    "$ git svn clone --stdlayout \\",
-    ">   --authors-file=authors.txt \\",
-    ">   https://svn.example.com/reiseportal reiseportal",
+praxis(d, "m13-autoren", crumb, "Autoren ermitteln", [
+    "$ svn checkout https://svn.example.com/reiseportal",
     "$ cd reiseportal",
-    "$ git branch -a  # übernommene SVN-Branches",
-    "$ git remote add origin <GitLab-URL>",
-    "$ git push -u origin --all",
-    "$ git push origin --tags",
+    "$ svn log -q > svn.log",
+    "$ cat svn.log | awk -F '|' '/^r/ {",
+    ">     sub(\"^ \", \"\", $2); sub(\" $\", \"\", $2)",
+    ">     print $2\" = \"$2\" <\"$2\">\"",
+    ">   }' | sort -u > authors.txt",
+    "",
+    "$ cat authors.txt",
+    "mmuster = mmuster <mmuster>",
+    "tschulz = tschulz <tschulz>",
 ], [
-    ("--stdlayout", "Erkennt die übliche Struktur aus trunk, branches und tags."),
-    ("--authors-file", "Ordnet jedem SVN-Benutzer Name und E-Mail zu."),
-    ("Nacharbeit", "SVN-Tags kommen als Branches an und werden in echte Git-Tags umgewandelt."),
-], "Comquent bringt für Migrationen vorgefertigte, in Projekten erprobte Skripte mit, die unter anderem die Umwandlung der Tags übernehmen. Im Kurs zeigen wir den Grundablauf mit git svn.")
+    ("svn log -q", "Listet alle Revisionen mit Autor und Datum, ohne Commit-Nachrichten."),
+    ("awk", "Schneidet den Benutzernamen aus der zweiten Spalte und baut daraus eine Zeile im Format der Autorenzuordnung."),
+    ("sort -u", "Jeder SVN-Benutzer erscheint genau einmal."),
+], "svn log arbeitet auch direkt mit der URL des Repositorys, dann ist kein Checkout nötig. Wichtig ist, dass die gesamte Historie erfasst wird, nicht nur der Teil einer Arbeitskopie.",
+    lead="Schritt 1: alle SVN-Benutzer aus der Historie in eine Datei authors.txt schreiben.")
+
+praxis(d, "m13-autoren-ergaenzen", crumb, "Die Autorenzuordnung vervollständigen", [
+    "# Vorher: aus svn.log erzeugt",
+    "mmuster = mmuster <mmuster>",
+    "tschulz = tschulz <tschulz>",
+    "jenkins = jenkins <jenkins>",
+    "",
+    "# Nachher: Name und E-Mail ergänzt",
+    "mmuster = Max Muster <max.muster@example.com>",
+    "tschulz = Tina Schulz <tina.schulz@example.com>",
+    "jenkins = Build-Server <build@example.com>",
+], [
+    ("Links", "Der SVN-Benutzername bleibt unverändert."),
+    ("Rechts", "So erscheint die Person künftig in Git: vollständiger Name und E&#8209;Mail-Adresse."),
+    ("Lücken", "Fehlt ein Benutzer, bricht git svn an dieser Revision ab."),
+], "Ausgeschiedene Kolleginnen und Kollegen sowie technische Benutzer wie Build-Server bekommen ebenfalls einen Eintrag, notfalls mit einer Sammeladresse. Frühe Revisionen enthalten manchmal den Benutzer „(no author)“, auch er braucht eine Zeile.",
+    lead="Schritt 2: Jeder Eintrag bekommt den Namen und die E-Mail-Adresse der Person.")
+
+praxis(d, "m13-clone", crumb, "Schrittweise migrieren", [
+    "$ git svn clone https://svn.example.com/reiseportal \\",
+    ">   --authors-file=authors.txt --prefix=svn/ \\",
+    ">   --trunk=trunk/ --branches=branches/ \\",
+    ">   --tags=tags/ -r 1:2000 reiseportal-git",
+    "$ cd reiseportal-git",
+    "$ git svn fetch -r 2001:4000",
+    "$ git svn fetch  # restliche Revisionen bis HEAD",
+    "",
+    "$ git branch -r",
+    "  svn/merkliste",
+    "  svn/tags/1.0",
+    "  svn/trunk",
+], [
+    ("--trunk, --branches, --tags", "Wo Hauptlinie, Branches und Tags im SVN-Repository liegen."),
+    ("--prefix=svn/", "Die SVN-Stände erscheinen in Git als svn/trunk, svn/&lt;Branch&gt; und svn/tags/&lt;Tag&gt;."),
+    ("-r von:bis", "Übernimmt die Historie in Etappen. Jedes git svn fetch setzt dort fort."),
+], "Große Repositories mit vielen tausend Revisionen brauchen für den Klon Stunden. In Etappen lässt sich die Migration unterbrechen und fortsetzen, und erste Ergebnisse lassen sich früh prüfen.",
+    lead="Schritt 3: die Historie mit git svn übernehmen, bei großen Repositories in Etappen.")
+
+praxis(d, "m13-tags", crumb, "SVN-Tags in Git-Tags umwandeln", [
+    "$ git for-each-ref refs/remotes/svn/tags \\",
+    ">   | grep -v @ | cut -d / -f 5- \\",
+    ">   | while read ref; do",
+    ">       git tag \"$ref\" \"refs/remotes/svn/tags/$ref\"",
+    ">     done",
+    "",
+    "$ git tag",
+    "1.0",
+    "1.1",
+    "$ git remote add origin <GitLab-URL>",
+    "$ git push --tags",
+], [
+    ("Ausgangslage", "In SVN sind Tags Kopien in einem Verzeichnis. git svn legt sie deshalb als Branches unter svn/tags/ ab."),
+    ("grep -v @", "Lässt Hilfsstände wie 1.0@1234 aus, die git svn für gelöschte oder neu angelegte Tags anlegt."),
+    ("cut -d / -f 5-", "Behält nur den Namen des Tags."),
+], "Die Tags zeigen danach auf genau den Commit, den der SVN-Tag markiert hat. Wurde in SVN nach dem Taggen noch im Tag-Verzeichnis committet, ist das an dieser Stelle zu prüfen.",
+    lead="Schritt 4: Aus den Tag-Verzeichnissen von SVN werden echte Git-Tags.")
+
+praxis(d, "m13-branches", crumb, "SVN-Branches als Git-Branches anlegen", [
+    "$ git for-each-ref | grep -v tags \\",
+    ">   | grep -v @ | grep -v %20 \\",
+    ">   | grep -v trunk | grep -v main \\",
+    ">   | cut -d / -f 4- \\",
+    ">   | while read ref; do",
+    ">       git branch \"$ref\" \"refs/remotes/svn/$ref\"",
+    ">     done",
+    "$ git branch",
+    "* main",
+    "  merkliste",
+    "$ git push --all",
+], [
+    ("grep -v", "Lässt Tags, Hilfsstände mit @, Namen mit Leerzeichen (%20), trunk und main aus."),
+    ("trunk", "Wird nicht kopiert: Der lokale Branch main ist beim Klonen bereits aus svn/trunk entstanden."),
+    ("git push --all", "Teilt alle lokalen Branches in GitLab."),
+], "Branches mit Leerzeichen im Namen werden von Hand mit einem gültigen Git-Namen angelegt. Vorher mit dem Team klären, welche alten Branches überhaupt noch gebraucht werden.",
+    lead="Schritt 5: Für jeden SVN-Branch entsteht ein lokaler Git-Branch.")
+
+praxis(d, "m13-sync", crumb, "Bis zum Stichtag mit SVN abgleichen", [
+    "$ git svn fetch --authors-file=authors.txt",
+    "",
+    "# Neue Revisionen im trunk",
+    "$ git switch main",
+    "$ git merge svn/trunk",
+    "$ git push",
+    "",
+    "# Neue Revisionen in einem Branch",
+    "$ git switch merkliste",
+    "$ git merge svn/merkliste",
+    "",
+    "# Neue Branches oder Tags: Skripte erneut ausführen",
+], [
+    ("git svn fetch", "Holt die Revisionen, die seit dem letzten Abgleich in SVN entstanden sind."),
+    ("authors.txt", "Neue SVN-Benutzer vorher ergänzen, sonst bricht der Abgleich ab."),
+    ("Richtung", "Bis zum Stichtag wird nur in SVN gearbeitet, Git spiegelt den Stand."),
+], "Solange das Team noch in SVN arbeitet, bleibt das Git-Repository ein Spiegel. Weil auf main in Git nicht committet wird, sind die Merges reine Fast-Forwards. Am Stichtag wird SVN schreibgeschützt, ein letzter Abgleich läuft, danach arbeitet das Team nur noch in GitLab.",
+    lead="Übergangsphase: Das Team arbeitet weiter in SVN, Git wird regelmäßig nachgezogen.")
 
 uebung(d, "m13-uebung", crumb, "Ein Migrationsplan für das Reiseportal", [
     "Analysieren Sie die vorbereitete Übersicht des SVN-Repositorys des Reiseportals.",

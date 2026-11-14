@@ -537,7 +537,7 @@ async function main() {
   if (all) { // PowerPoint-Dateien entfernen, deren Kapitel es nicht mehr gibt
     const kap = path.join(PPTX, 'kapitel');
     if (fs.existsSync(kap)) for (const f of fs.readdirSync(kap)) {
-      if (f.endsWith('.pptx') && !keys.includes(`kapitel/${f.slice(0, -5)}`)) { fs.unlinkSync(path.join(kap, f)); console.log(`entfernt: kapitel/${f}`); }
+      if (f.endsWith('.pptx') && !f.startsWith('~$') && !keys.includes(`kapitel/${f.slice(0, -5)}`)) { fs.unlinkSync(path.join(kap, f)); console.log(`entfernt: kapitel/${f}`); }
     }
   }
 }
