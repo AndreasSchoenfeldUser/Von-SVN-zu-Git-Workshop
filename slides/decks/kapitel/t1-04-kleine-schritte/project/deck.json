@@ -19,7 +19,8 @@
   "m4-ignore",
   "m4-patch",
   "m4-uebung",
-  "m4-ref"
+  "m4-ref",
+  "m4-ki"
  ],
  "cover": "m4",
  "sections": {

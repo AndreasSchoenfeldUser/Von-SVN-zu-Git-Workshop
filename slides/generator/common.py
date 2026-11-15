@@ -139,6 +139,11 @@ section.content .rise{flex:1;min-height:0;display:flex;flex-direction:column;jus
 .ref .ru{font-family:'JetBrains Mono','Courier New',monospace;font-size:24px;line-height:1.35;color:var(--coral-ink);}
 .ref .ru a{color:var(--coral-ink);text-decoration:none;}
 .checked{font-size:24px;color:var(--muted);margin-top:28px;}
+.t-ki{background:var(--card);color:var(--coral-ink);border:2px solid var(--coral-ink);}
+.prompts{display:flex;flex-direction:column;gap:28px;}
+.prm{border-left:6px solid var(--navy);padding:2px 0 2px 28px;display:flex;flex-direction:column;gap:6px;}
+.prm .pk{font-size:24px;font-weight:600;color:var(--coral-ink);letter-spacing:1px;}
+.prm .pt{font-size:28px;line-height:1.4;color:var(--navy);}
 .rise{animation:rise 520ms ease-out both;animation-delay:120ms;}
 @keyframes rise{from{opacity:0;transform:translateY(18px);}}
 """
@@ -149,7 +154,7 @@ FACES = {
     "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"},
 }
 
-TAGS = {"Theorie": "t-theorie", "Praxis": "t-praxis", "Übung": "t-uebung", "Einführung": "t-intro", "Referenzen": "t-ref"}
+TAGS = {"Theorie": "t-theorie", "Praxis": "t-praxis", "Übung": "t-uebung", "Einführung": "t-intro", "Referenzen": "t-ref", "KI-Prompts": "t-ki"}
 
 
 class Deck:
@@ -334,6 +339,16 @@ def referenzen(d, sid, crumb, refs, notes):
         for t, q, u in refs)
     body = '<div class="refs">%s</div><p class="checked">Links geprüft am %s.</p>' % (rows, REFS_CHECKED)
     content(d, sid, "Referenzen", crumb, "Zum Nachlesen", body, notes)
+
+
+def prompts(d, sid, crumb, items, notes):
+    """Prompts zum Vertiefen mit Claude oder ChatGPT. items: Liste von (Kennwort, Prompt), höchstens drei."""
+    assert len(items) <= 3, sid
+    rows = "".join('<div class="prm"><p class="pk">%s</p><p class="pt">%s</p></div>' % (k.upper(), html.escape(t, quote=False))
+                   for k, t in items)
+    body = ('<div class="prompts">%s</div><p class="checked">Für Claude und ChatGPT. Antworten mit den Referenzen abgleichen, '
+            'keinen vertraulichen Code eingeben.</p>' % rows)
+    content(d, sid, "KI-Prompts", crumb, "Mit KI vertiefen", body, notes)
 
 
 def table(header, rows, widths):

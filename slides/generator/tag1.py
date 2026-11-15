@@ -45,6 +45,12 @@ referenzen(d, "t1-ref", "Einführung", [
     ("Use Git", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/topics/git/"),
 ], "Pro Git ist das Standardwerk und kostenlos auf Deutsch verfügbar; die Kapitelangaben auf den folgenden Referenz-Slides beziehen sich darauf. Learn Git Branching eignet sich zum Üben zwischen den beiden Kurstagen.")
 
+prompts(d, "t1-ki", "Einführung", [
+    ("Verstehen", "Ich arbeite seit Jahren mit SVN und lerne gerade Git. Erkläre mir am Weg einer Änderung von der Aufgabe bis zur Auslieferung, welche Schritte Git anders organisiert. Bitte keine Befehlstabellen."),
+    ("Üben", "Erstelle mir einen Lernplan für zwei Wochen, um Git-Grundlagen nach einer Schulung zu festigen: täglich 20 Minuten, mit kleinen Übungen in einem Java-Projekt mit Maven."),
+    ("Übertragen", "Ich möchte mein Team von SVN auf Git umstellen. Welche Fragen sollten wir vorab klären, damit der neue Arbeitsablauf zu uns passt? Stelle mir die Fragen einzeln und warte jeweils auf meine Antwort."),
+], "Die Prompts sind Angebote für die Nacharbeit, nicht Teil der Übungszeit. Die drei Kennwörter wiederholen sich in jedem Kapitel: Verstehen erklärt, Üben fragt ab, Übertragen bezieht den eigenen Alltag ein. Hinweisen: KI-Antworten können falsche Optionen enthalten, deshalb mit den Referenzen abgleichen; keinen Firmencode eingeben.")
+
 # ---------- Modul 1 ----------
 crumb = M(1, "Auftakt")
 d.section("Modul 01: Ausgangslage – wie arbeitet das Team heute mit SVN?",
@@ -84,6 +90,12 @@ referenzen(d, "m1-ref", crumb, [
     ("Verteilter Arbeitsablauf", "Pro Git, Kapitel 5.1 · zentrale und verteilte Teamabläufe", "https://git-scm.com/book/de/v2/Verteiltes-Git-Verteilter-Arbeitsablauf"),
     ("Von SVN zu Git migrieren", "Atlassian Git-Tutorial · Unterschiede aus Sicht von SVN-Teams, deutsch", "https://www.atlassian.com/de/git/tutorials/migrating-overview"),
 ], "Kapitel 1.1 von Pro Git erklärt den Unterschied zwischen zentraler und verteilter Versionsverwaltung mit denselben Bildern wie dieses Modul. Das Atlassian-Tutorial richtet sich ausdrücklich an Teams, die von SVN kommen.")
+
+prompts(d, "m1-ki", crumb, [
+    ("Verstehen", "Erkläre den Unterschied zwischen zentraler und verteilter Versionsverwaltung an einem Alltagsbeispiel. Was bedeutet es praktisch, dass jede Git-Kopie die vollständige Historie enthält?"),
+    ("Üben", "Stelle mir fünf Verständnisfragen zu zentraler und verteilter Versionsverwaltung. Frage einzeln, bewerte meine Antwort und erkläre, was fehlt."),
+    ("Übertragen", "Unser Team arbeitet mit SVN: morgens ein Update, Commits direkt auf den Trunk, Branches nur für Releases. Welche Gewohnheiten müssen wir mit Git ändern, und welche können bleiben?"),
+], "Der dritte Prompt greift die Skizze aus der Übung auf. Die Teilnehmenden können ihren eigenen Ablauf statt des Beispiels einsetzen.")
 
 # ---------- Modul 2 ----------
 crumb = M(2, "Das Git-Modell")
@@ -145,6 +157,12 @@ referenzen(d, "m2-ref", crumb, [
     ("Git-Objekte", "Pro Git, Kapitel 10.2 · wie Commits und Hashes intern aufgebaut sind", "https://git-scm.com/book/de/v2/Git-Interna-Git-Objekte"),
     ("git status", "Git-Referenz · Kurzformat und Statuscodes, englisch", "https://git-scm.com/docs/git-status"),
 ], "Kapitel 1.3 ist die beste Vertiefung zu Snapshots und den drei Bereichen. Kapitel 10.2 ist für Neugierige, die wissen wollen, woraus ein Commit-Hash berechnet wird.")
+
+prompts(d, "m2-ki", crumb, [
+    ("Verstehen", "Erkläre Working Directory, Staging Area und lokales Repository mit einer Analogie, die nicht aus der Softwareentwicklung stammt. Zeige dann, wo eine geänderte Datei nach git add und nach git commit steht."),
+    ("Üben", "Gib mir fünf Ausgaben von git status --short und lass mich jeweils sagen, in welchem Bereich sich jede Datei befindet. Löse erst nach meiner Antwort auf."),
+    ("Hintergrund", "Warum verwendet Git Hashes statt fortlaufender Revisionsnummern? Erkläre, woraus ein Commit-Hash berechnet wird und was das für die Unveränderlichkeit der Historie bedeutet."),
+], "Der Übungs-Prompt trainiert genau das Lesen von git status, das in diesem Modul im Mittelpunkt steht. Der Hintergrund-Prompt ist für Teilnehmende, die die Interna interessieren.")
 
 # ---------- Modul 3 ----------
 crumb = M(3, "Arbeiten und festhalten")
@@ -222,6 +240,12 @@ referenzen(d, "m3-ref", crumb, [
     ("git diff", "Git-Referenz, englisch", "https://git-scm.com/docs/git-diff"),
     ("git commit", "Git-Referenz, englisch", "https://git-scm.com/docs/git-commit"),
 ], "Für den Arbeitszyklus genügen die Kapitel 2.1 bis 2.3 von Pro Git. Die Referenzseiten zu git diff und git commit sind zum Nachschlagen einzelner Optionen gedacht.")
+
+prompts(d, "m3-ki", crumb, [
+    ("Verstehen", "Ich komme von SVN, wo ein Commit sofort auf dem Server landet. Erkläre, warum ein Git-Commit lokal bleibt und welche Freiheiten mir das im Arbeitsalltag gibt."),
+    ("Üben", "Gib mir eine Übung für die Kommandozeile: Repository anlegen, drei Dateien ändern, mit git diff prüfen und in zwei getrennten Commits festhalten. Prüfe danach meine Ausgabe von git log."),
+    ("Übertragen", "Welche Einstellungen in git config sollte ich als Erstes vornehmen, wenn ich unter Windows in einem Java-Projekt arbeite? Begründe jede Einstellung kurz."),
+], "Beim dritten Prompt sollte die KI auf Zeilenenden (core.autocrlf) eingehen. Fehlt das, nachfragen lassen: Das ist in gemischten Windows- und Linux-Teams der häufigste Stolperstein.")
 
 # ---------- Modul 4 ----------
 crumb = M(4, "In kleinen Schritten arbeiten")
@@ -301,6 +325,12 @@ referenzen(d, "m4-ref", crumb, [
     ("Interaktives Stagen", "Pro Git, Kapitel 7.2 · git add --patch", "https://git-scm.com/book/de/v2/Git-Tools-Interaktives-Stagen"),
 ], "Der Artikel von Chris Beams ist die meistzitierte Anleitung für Commit Messages. Conventional Commits lohnt sich, wenn das Team Changelogs oder Versionsnummern aus der Historie ableiten möchte. Die Vorlagen Java.gitignore und Maven.gitignore passen zum Reiseportal.")
 
+prompts(d, "m4-ki", crumb, [
+    ("Verstehen", "Was macht eine gute Commit Message aus? Zeige mir drei schlechte und drei gute Beispiele für Änderungen an einer Spring-Boot-Anwendung und begründe den Unterschied."),
+    ("Üben", "Ich beschreibe dir Änderungen. Schlage jeweils eine Commit Message vor und sage mir, ob die Änderung besser auf mehrere Commits verteilt werden sollte. Erste Änderung:"),
+    ("Übertragen", "Erstelle eine .gitignore für ein Maven-Projekt mit Spring Boot, das in IntelliJ IDEA und Eclipse bearbeitet wird. Erkläre jeden Eintrag in einem Satz."),
+], "Der Übungs-Prompt endet offen: Die Teilnehmenden ergänzen eine eigene Änderung. Die erzeugte .gitignore mit der Vorlage aus github/gitignore vergleichen.")
+
 # ---------- Modul 5 ----------
 crumb = M(5, "Sicher experimentieren")
 d.section("Modul 05: Sicher experimentieren – Änderungen zurücknehmen und parken",
@@ -361,6 +391,12 @@ referenzen(d, "m5-ref", crumb, [
     ("git restore", "Git-Referenz, englisch", "https://git-scm.com/docs/git-restore"),
     ("git reflog", "Git-Referenz · verlorene Stände wiederfinden, englisch", "https://git-scm.com/docs/git-reflog"),
 ], "„Reset entzaubert“ vertieft die Grafik aus diesem Modul und ist die gründlichste Erklärung von soft, mixed und hard. Auf git reflog verweisen, wenn jemand nach einem reset --hard Arbeit vermisst.")
+
+prompts(d, "m5-ki", crumb, [
+    ("Verstehen", "Erkläre git restore, git reset mit --soft, --mixed und --hard sowie git revert. Ordne jeden Befehl danach ein, welche der drei Bereiche er verändert und ob er die Historie umschreibt."),
+    ("Üben", "Spiele mit mir Rettungsdienst: Beschreibe eine Situation, in der in Git etwas schiefgegangen ist. Ich nenne den Befehl, mit dem ich es beheben würde, und du bewertest meine Lösung."),
+    ("Übertragen", "Ich habe versehentlich git reset --hard ausgeführt und vermisse einen Commit. Führe mich Schritt für Schritt mit git reflog zur Wiederherstellung und erkläre, warum das funktioniert."),
+], "Der Übungs-Prompt setzt die Übung „Der Rettungsdienst“ beliebig fort. Wichtig für den dritten Prompt: Nicht committete Änderungen kann auch reflog nicht zurückholen.")
 
 # ---------- Modul 6 ----------
 crumb = M(6, "Ein Branch pro Aufgabe")
@@ -430,6 +466,12 @@ referenzen(d, "m6-ref", crumb, [
     ("Learn Git Branching", "Branches und Merges interaktiv üben, deutsch", "https://learngitbranching.js.org/?locale=de_DE"),
 ], "Kapitel 3.1 und 3.2 von Pro Git entsprechen genau diesem Modul. Learn Git Branching zeigt jeden Befehl als Graph und eignet sich gut für die Abendaufgabe.")
 
+prompts(d, "m6-ki", crumb, [
+    ("Verstehen", "Erkläre, warum ein Branch in Git nur ein Zeiger auf einen Commit ist und warum Branches deshalb so günstig sind. Zeige einen Fast-Forward und einen 3-Way-Merge als ASCII-Grafik."),
+    ("Üben", "Nenne mir eine Folge von Git-Befehlen mit Branches, Commits und Merges und lass mich den entstehenden Commit-Graphen beschreiben. Steigere den Schwierigkeitsgrad mit jeder Runde."),
+    ("Übertragen", "Welche Namenskonventionen für Branches sind verbreitet, etwa feature/, bugfix/ oder Ticketnummern? Schlage eine Konvention für ein Team vor, das mit Jira-Tickets arbeitet, und begründe sie."),
+], "ASCII-Grafiken gelingen den Modellen unterschiedlich gut. Wenn die Grafik verwirrt, mit Learn Git Branching gegenprüfen.")
+
 # ---------- Modul 7 ----------
 crumb = M(7, "Der kaputte Freitag")
 d.section("Modul 07: Übung „Der kaputte Freitag“ – Fehlersuche in der Historie",
@@ -470,6 +512,12 @@ referenzen(d, "m7-ref", crumb, [
     ("git bisect", "Git-Referenz · fehlerhaften Commit per Binärsuche finden, englisch", "https://git-scm.com/docs/git-bisect"),
     ("git revert", "Git-Referenz, englisch", "https://git-scm.com/docs/git-revert"),
 ], "git bisect wurde in der Übung nicht benötigt, ist aber das passende Werkzeug, wenn zwischen gutem und schlechtem Stand Hunderte Commits liegen. Kapitel 7.10 zeigt es an einem Beispiel.")
+
+prompts(d, "m7-ki", crumb, [
+    ("Verstehen", "Erkläre, wie git bisect funktioniert und wann es schneller zum fehlerhaften Commit führt als git log und git blame. Rechne vor, wie viele Schritte bei 500 Commits nötig sind."),
+    ("Üben", "Simuliere ein Repository mit zehn Commits, in dem sich ein Fehler versteckt. Ich frage dich nach Ausgaben von git log, git show und git blame, bis ich den verantwortlichen Commit gefunden habe."),
+    ("Übertragen", "Wie kombiniere ich git bisect mit einem automatisierten Test wie mvn test? Zeige den Ablauf mit git bisect run und erkläre die Bedeutung der Exit-Codes."),
+], "Der Übungs-Prompt macht aus der KI eine Spielleitung für weitere Runden „Der kaputte Freitag“. Bei 500 Commits sind höchstens neun Schritte nötig; daran lässt sich die Antwort prüfen.")
 
 content(d, "abschluss", "Einführung", "Abschluss Tag 1", "Rückblick und Ausblick",
         stations([1, 2], ["Erledigt: Branch je Aufgabe", "Erledigt: lokale Commits", "Morgen", "Morgen", "Morgen", "Morgen"]) +
