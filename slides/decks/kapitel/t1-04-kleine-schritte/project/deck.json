@@ -18,7 +18,8 @@
   "m4-message",
   "m4-ignore",
   "m4-patch",
-  "m4-uebung"
+  "m4-uebung",
+  "m4-ref"
  ],
  "cover": "m4",
  "sections": {

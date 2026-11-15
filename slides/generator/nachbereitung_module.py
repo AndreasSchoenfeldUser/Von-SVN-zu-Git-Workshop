@@ -114,3 +114,11 @@ uebung(d, "zn-uebung", crumb, "Das migrierte Reiseportal aufräumen", [
     "Teilen Sie beide Repositories in der GitLab-Gruppe Ihres Teams.",
 ], "35 Minuten", "Teams mit 3 bis 4 Personen", "Ein schlankes Reiseportal mit Git LFS und Submodule sowie ein eigenes Repository hotel-import.",
     notes="Grundlage ist das in Modul 14 migrierte Repository. portal-common liegt bereits in der GitLab-Gruppe jedes Teams. Für die neue Version in Schritt 3 legt die Trainerin oder der Trainer während der Übung einen Commit in portal-common an.")
+
+referenzen(d, "zn-ref", crumb, [
+    ("Git Large File Storage", "Projektseite mit Installation, englisch", "https://git-lfs.com/"),
+    ("git lfs migrate", "Git-LFS-Handbuch, englisch", "https://github.com/git-lfs/git-lfs/blob/main/docs/man/git-lfs-migrate.adoc"),
+    ("Git Large File Storage (LFS)", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/topics/git/lfs/"),
+    ("Submodule", "Pro Git, Kapitel 7.11", "https://git-scm.com/book/de/v2/Git-Tools-Submodule"),
+    ("git filter-repo", "Nachfolger von filter-branch, englisch", "https://github.com/newren/git-filter-repo"),
+], "Die Referenz zu git filter-branch rät selbst zu git filter-repo; dessen Dokumentation enthält eine Übersicht, wie sich filter-branch-Aufrufe übertragen lassen. Für Submodule ist Kapitel 7.11 von Pro Git die beste deutschsprachige Darstellung.")

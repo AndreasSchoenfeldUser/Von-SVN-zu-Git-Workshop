@@ -17,7 +17,8 @@
   "m5-wege",
   "m5-reset",
   "m5-praxis",
-  "m5-uebung"
+  "m5-uebung",
+  "m5-ref"
  ],
  "cover": "m5",
  "sections": {

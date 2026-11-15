@@ -20,7 +20,8 @@
   "zn-sub-add",
   "zn-sub-update",
   "zn-schneiden",
-  "zn-uebung"
+  "zn-uebung",
+  "zn-ref"
  ],
  "cover": "zn",
  "sections": {

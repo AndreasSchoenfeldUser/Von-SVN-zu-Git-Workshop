@@ -19,7 +19,7 @@ Leitidee mit sechs Stationen: Aufgabe übernehmen, Arbeiten und festhalten, Teil
 
 ## Aufbau
 
-- `slides/generator/common.py`: Stil (CSS), Farben, Schriften, Bausteine (`cover`, `divider`, `content`, `statement`, `card`, `cards`, `table`, `praxis`, `uebung`, `stations`, `graph`, `workflow`).
+- `slides/generator/common.py`: Stil (CSS), Farben, Schriften, Bausteine (`cover`, `divider`, `content`, `statement`, `card`, `cards`, `table`, `praxis`, `uebung`, `stations`, `graph`, `workflow`, `referenzen`).
 - `slides/generator/tag1.py`, `tag2.py`: Inhalte je Tag. `tag2.py` bindet `workflow_module.py` (Zusatzmodul Git-Workflow) nach Modul 12 und `nachbereitung_module.py` (Zusatzmodul Nachbereitung des Umzugs) nach Modul 14 ein.
 - Ausgabe: `slides/decks/<tag>/project/` (Gesamt-Deck des Tages) und `slides/decks/kapitel/<kapitel>/project/` (ein Deck je Kapitel), jeweils mit `deck.json`, `deck.css`, `slides/<id>.html`. Jedes Kapitel beginnt mit `d.section(beschreibung, verzeichnis, titel)`; neue Kapitel brauchen dort einen eindeutigen Verzeichnisnamen (`t1-…`, `t2-…`). Nach jeder Änderung am Generator neu erzeugen und die Ausgabe mit committen.
 - PowerPoint: `tools/pptx/export.js` rendert die Deck-Dateien in Chrome und baut daraus `slides/pptx/<tag>.pptx` und `slides/pptx/kapitel/<kapitel>.pptx` (`cd tools/pptx && npm run build`). Nach jeder Neuerzeugung der Decks ebenfalls neu erzeugen und mit committen. Der Export kennt die Bausteine aus `common.py` nicht einzeln, sondern übersetzt das berechnete Layout; neue CSS-Effekte (Verläufe, Schatten, Transformationen) dort nachziehen.
@@ -27,7 +27,8 @@ Leitidee mit sechs Stationen: Aufgabe übernehmen, Arbeiten und festhalten, Teil
 
 ## Slide-Konventionen
 
-- Jedes Modul: Trennfolie (`divider`), Theorie, Praxis (Code links, Erläuterungen rechts), Übung (Aufgaben, Zeit, Arbeitsform, Ergebnis). Kennzeichnung oben links: „Theorie“, „Praxis“, „Übung“, „Einführung“.
+- Jedes Modul: Trennfolie (`divider`), Theorie, Praxis (Code links, Erläuterungen rechts), Übung (Aufgaben, Zeit, Arbeitsform, Ergebnis), am Ende eine Referenz-Slide „Zum Nachlesen“ (`referenzen`, höchstens fünf Quellen). Kennzeichnung oben links: „Theorie“, „Praxis“, „Übung“, „Einführung“, „Referenzen“.
+- Referenzen: bevorzugt Pro Git auf Deutsch (git-scm.com/book/de/v2, mit Kapitelnummer), die Git-Referenz und die GitLab-Dokumentation; Sprache der Quelle angeben. Nach Änderungen `python3 tools/links/check.py` ausführen; alle Links müssen erreichbar sein. Das Prüfdatum steht in `REFS_CHECKED` in `common.py`.
 - Jede Slide hat Sprechernotizen (`notes`).
 - Farben aus dem Logo der Comquent Academy: Navy `#10345A`, Koralle `#EC3C5C`, Text-Koralle `#B81E3E`, Papier `#F7F4EF`.
 - Schriften: Space Grotesk (Überschriften), Inter (Text), JetBrains Mono (Code).

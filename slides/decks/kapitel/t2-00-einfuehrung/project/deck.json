@@ -15,7 +15,8 @@
  "order": [
   "cover",
   "ablauf",
-  "leitidee"
+  "leitidee",
+  "t2-ref"
  ],
  "cover": "cover",
  "sections": {

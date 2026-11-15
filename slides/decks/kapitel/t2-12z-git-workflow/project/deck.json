@@ -25,7 +25,8 @@
   "zw-praxis-feature",
   "zw-praxis-release",
   "zw-praxis-hotfix",
-  "zw-uebung"
+  "zw-uebung",
+  "zw-ref"
  ],
  "cover": "zw",
  "sections": {

@@ -22,7 +22,8 @@
   "m13-tags",
   "m13-branches",
   "m13-sync",
-  "m13-uebung"
+  "m13-uebung",
+  "m13-ref"
  ],
  "cover": "m13",
  "sections": {

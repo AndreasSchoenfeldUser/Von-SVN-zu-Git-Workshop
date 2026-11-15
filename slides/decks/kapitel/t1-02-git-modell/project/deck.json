@@ -17,7 +17,8 @@
   "m2-bereiche",
   "m2-snapshots",
   "m2-praxis",
-  "m2-uebung"
+  "m2-uebung",
+  "m2-ref"
  ],
  "cover": "m2",
  "sections": {

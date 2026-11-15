@@ -38,6 +38,13 @@ content(d, "projekt", "Einführung", "Übungsprojekt", "Roter Faden: das Reisepo
         ]),
         "Alle Übungen bauen aufeinander auf. Die Schulungsumgebung in der Cloud enthält das vorbereitete Projekt; die Teilnehmenden brauchen nur Browser und Internetzugang.")
 
+referenzen(d, "t1-ref", "Einführung", [
+    ("Pro Git", "Scott Chacon, Ben Straub · Buch, deutsch", "https://git-scm.com/book/de/v2/"),
+    ("Git-Referenzdokumentation", "git-scm.com · alle Befehle, englisch", "https://git-scm.com/docs"),
+    ("Learn Git Branching", "interaktives Lernspiel im Browser, deutsch", "https://learngitbranching.js.org/?locale=de_DE"),
+    ("Use Git", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/topics/git/"),
+], "Pro Git ist das Standardwerk und kostenlos auf Deutsch verfügbar; die Kapitelangaben auf den folgenden Referenz-Slides beziehen sich darauf. Learn Git Branching eignet sich zum Üben zwischen den beiden Kurstagen.")
+
 # ---------- Modul 1 ----------
 crumb = M(1, "Auftakt")
 d.section("Modul 01: Ausgangslage – wie arbeitet das Team heute mit SVN?",
@@ -70,6 +77,13 @@ uebung(d, "m1-uebung", crumb, "Unser Arbeitsablauf heute", [
     "Stellen Sie Ihre Skizze in drei Minuten vor.",
 ], "25 Minuten", "Kleingruppen mit 3 bis 4 Personen", "Skizze des heutigen Ablaufs; sie bleibt bis zum Ende von Tag 2 hängen.",
     notes="Die Skizzen werden fotografiert und am Ende von Tag 2 mit dem neuen Ablauf verglichen. Achten Sie darauf, dass Wartezeiten und Konfliktstellen konkret benannt werden.")
+
+referenzen(d, "m1-ref", crumb, [
+    ("Was ist Versionsverwaltung?", "Pro Git, Kapitel 1.1 · zentral und verteilt", "https://git-scm.com/book/de/v2/Erste-Schritte-Was-ist-Versionsverwaltung%3F"),
+    ("Kurzer Überblick über die Historie von Git", "Pro Git, Kapitel 1.2", "https://git-scm.com/book/de/v2/Erste-Schritte-Kurzer-%c3%9cberblick-%c3%bcber-die-Historie-von-Git"),
+    ("Verteilter Arbeitsablauf", "Pro Git, Kapitel 5.1 · zentrale und verteilte Teamabläufe", "https://git-scm.com/book/de/v2/Verteiltes-Git-Verteilter-Arbeitsablauf"),
+    ("Von SVN zu Git migrieren", "Atlassian Git-Tutorial · Unterschiede aus Sicht von SVN-Teams, deutsch", "https://www.atlassian.com/de/git/tutorials/migrating-overview"),
+], "Kapitel 1.1 von Pro Git erklärt den Unterschied zwischen zentraler und verteilter Versionsverwaltung mit denselben Bildern wie dieses Modul. Das Atlassian-Tutorial richtet sich ausdrücklich an Teams, die von SVN kommen.")
 
 # ---------- Modul 2 ----------
 crumb = M(2, "Das Git-Modell")
@@ -124,6 +138,13 @@ uebung(d, "m2-uebung", crumb, "Die drei Bereiche erleben", [
     "Halten Sie nach jedem Schritt fest, in welchem Bereich sich die Änderung befindet.",
 ], "15 Minuten", "Einzelarbeit", "Eine Notiz, die den Weg der Änderung durch die drei Bereiche beschreibt.",
     notes="Hier noch nicht committen: Ziel ist das Gefühl für die Bereiche. Der erste Commit folgt in Modul 03.")
+
+referenzen(d, "m2-ref", crumb, [
+    ("Was ist Git?", "Pro Git, Kapitel 1.3 · Snapshots und die drei Zustände", "https://git-scm.com/book/de/v2/Erste-Schritte-Was-ist-Git%3F"),
+    ("Änderungen nachverfolgen und im Repository speichern", "Pro Git, Kapitel 2.2", "https://git-scm.com/book/de/v2/Git-Grundlagen-%c3%84nderungen-nachverfolgen-und-im-Repository-speichern"),
+    ("Git-Objekte", "Pro Git, Kapitel 10.2 · wie Commits und Hashes intern aufgebaut sind", "https://git-scm.com/book/de/v2/Git-Interna-Git-Objekte"),
+    ("git status", "Git-Referenz · Kurzformat und Statuscodes, englisch", "https://git-scm.com/docs/git-status"),
+], "Kapitel 1.3 ist die beste Vertiefung zu Snapshots und den drei Bereichen. Kapitel 10.2 ist für Neugierige, die wissen wollen, woraus ein Commit-Hash berechnet wird.")
 
 # ---------- Modul 3 ----------
 crumb = M(3, "Arbeiten und festhalten")
@@ -193,6 +214,14 @@ uebung(d, "m3-uebung", crumb, "Der erste eigene Commit", [
     "Ändern Sie zwei weitere Werte in <b>application.yml</b> in je einem eigenen Commit und lesen Sie die Historie.",
 ], "30 Minuten", "Einzelarbeit", "Eine Historie mit mindestens drei nachvollziehbaren Commits.",
     notes="Gehen Sie herum und schauen Sie auf die Commit-Beschreibungen. Gute Beispiele merken, sie sind der Einstieg in Modul 04.")
+
+referenzen(d, "m3-ref", crumb, [
+    ("Git Basis-Konfiguration", "Pro Git, Kapitel 1.6 · Name, E-Mail, Editor", "https://git-scm.com/book/de/v2/Erste-Schritte-Git-Basis-Konfiguration"),
+    ("Ein Git-Repository anlegen", "Pro Git, Kapitel 2.1", "https://git-scm.com/book/de/v2/Git-Grundlagen-Ein-Git-Repository-anlegen"),
+    ("Anzeigen der Commit-Historie", "Pro Git, Kapitel 2.3 · git log und seine Optionen", "https://git-scm.com/book/de/v2/Git-Grundlagen-Anzeigen-der-Commit-Historie"),
+    ("git diff", "Git-Referenz, englisch", "https://git-scm.com/docs/git-diff"),
+    ("git commit", "Git-Referenz, englisch", "https://git-scm.com/docs/git-commit"),
+], "Für den Arbeitszyklus genügen die Kapitel 2.1 bis 2.3 von Pro Git. Die Referenzseiten zu git diff und git commit sind zum Nachschlagen einzelner Optionen gedacht.")
 
 # ---------- Modul 4 ----------
 crumb = M(4, "In kleinen Schritten arbeiten")
@@ -264,6 +293,14 @@ uebung(d, "m4-uebung", crumb, "Aufräumen in kleinen Schritten", [
 ], "30 Minuten", "Einzelarbeit, Vergleich zu zweit", "Saubere Historie mit drei Commits und einer .gitignore-Datei.",
     notes="Der Stand modul04 liegt als Branch in der Schulungsumgebung bereit. Wechsel mit git switch modul04; das Konzept dahinter folgt in Modul 06.")
 
+referenzen(d, "m4-ref", crumb, [
+    ("How to Write a Git Commit Message", "Chris Beams · sieben Regeln für gute Commit Messages, englisch", "https://cbea.ms/git-commit/"),
+    ("Conventional Commits 1.0.0", "Konvention für strukturierte Commit Messages, deutsch", "https://www.conventionalcommits.org/de/v1.0.0/"),
+    ("gitignore", "Git-Referenz · Aufbau und Muster, englisch", "https://git-scm.com/docs/gitignore"),
+    ("github/gitignore", "Vorlagen, unter anderem für Java und Maven", "https://github.com/github/gitignore"),
+    ("Interaktives Stagen", "Pro Git, Kapitel 7.2 · git add --patch", "https://git-scm.com/book/de/v2/Git-Tools-Interaktives-Stagen"),
+], "Der Artikel von Chris Beams ist die meistzitierte Anleitung für Commit Messages. Conventional Commits lohnt sich, wenn das Team Changelogs oder Versionsnummern aus der Historie ableiten möchte. Die Vorlagen Java.gitignore und Maven.gitignore passen zum Reiseportal.")
+
 # ---------- Modul 5 ----------
 crumb = M(5, "Sicher experimentieren")
 d.section("Modul 05: Sicher experimentieren – Änderungen zurücknehmen und parken",
@@ -316,6 +353,14 @@ uebung(d, "m5-uebung", crumb, "Der Rettungsdienst", [
     "Formulieren Sie Ihren letzten lokalen Commit neu.",
 ], "30 Minuten", "Partnerarbeit", "Fünf gelöste Situationen; für jede notieren Sie den gewählten Weg und den Grund.",
     notes="Wichtiger als der Befehl ist die Begründung: Warum war in dieser Situation genau dieser Weg richtig?")
+
+referenzen(d, "m5-ref", crumb, [
+    ("Ungewollte Änderungen rückgängig machen", "Pro Git, Kapitel 2.4", "https://git-scm.com/book/de/v2/Git-Grundlagen-Ungewollte-%c3%84nderungen-r%c3%bcckg%c3%a4ngig-machen"),
+    ("Reset entzaubert", "Pro Git, Kapitel 7.7 · reset und die drei Bereiche", "https://git-scm.com/book/de/v2/Git-Tools-Reset-entzaubert"),
+    ("Stashen und Bereinigen", "Pro Git, Kapitel 7.3", "https://git-scm.com/book/de/v2/Git-Tools-Stashen-und-Bereinigen"),
+    ("git restore", "Git-Referenz, englisch", "https://git-scm.com/docs/git-restore"),
+    ("git reflog", "Git-Referenz · verlorene Stände wiederfinden, englisch", "https://git-scm.com/docs/git-reflog"),
+], "„Reset entzaubert“ vertieft die Grafik aus diesem Modul und ist die gründlichste Erklärung von soft, mixed und hard. Auf git reflog verweisen, wenn jemand nach einem reset --hard Arbeit vermisst.")
 
 # ---------- Modul 6 ----------
 crumb = M(6, "Ein Branch pro Aufgabe")
@@ -377,6 +422,14 @@ uebung(d, "m6-uebung", crumb, "Zwei Aufgaben, ein Repository", [
 ], "35 Minuten", "Einzelarbeit", "main enthält beide Aufgaben; Sie können erklären, warum einmal Fast-Forward und einmal ein Merge-Commit entstand.",
     notes="Die beiden Branches ändern bewusst unterschiedliche Dateien, damit hier noch keine Konflikte entstehen.")
 
+referenzen(d, "m6-ref", crumb, [
+    ("Branches auf einen Blick", "Pro Git, Kapitel 3.1 · Branch als Zeiger", "https://git-scm.com/book/de/v2/Git-Branching-Branches-auf-einen-Blick"),
+    ("Einfaches Branching und Merging", "Pro Git, Kapitel 3.2 · Fast-Forward und 3-Way-Merge", "https://git-scm.com/book/de/v2/Git-Branching-Einfaches-Branching-und-Merging"),
+    ("Branch-Management", "Pro Git, Kapitel 3.3", "https://git-scm.com/book/de/v2/Git-Branching-Branch-Management"),
+    ("git switch", "Git-Referenz, englisch", "https://git-scm.com/docs/git-switch"),
+    ("Learn Git Branching", "Branches und Merges interaktiv üben, deutsch", "https://learngitbranching.js.org/?locale=de_DE"),
+], "Kapitel 3.1 und 3.2 von Pro Git entsprechen genau diesem Modul. Learn Git Branching zeigt jeden Befehl als Graph und eignet sich gut für die Abendaufgabe.")
+
 # ---------- Modul 7 ----------
 crumb = M(7, "Der kaputte Freitag")
 d.section("Modul 07: Übung „Der kaputte Freitag“ – Fehlersuche in der Historie",
@@ -409,6 +462,14 @@ uebung(d, "m7-uebung", crumb, "Der kaputte Freitag", [
 ], "25 Minuten", "Partnerarbeit", "Ein Revert-Commit, dessen Beschreibung Ursache und Lösung nennt.",
     scenario="Freitag, 14:30 Uhr: Seit dem letzten Deployment scheitert jede Buchung beim Bezahlen mit Kreditkarte. Niemand weiß, was sich geändert hat.",
     notes="Der Stand freitag liegt in der Schulungsumgebung bereit. Die Ursache ist ein zu kurzes Timeout für den Zahlungsdienst in application.yml, versteckt zwischen mehreren harmlosen Commits.")
+
+referenzen(d, "m7-ref", crumb, [
+    ("Debuggen mit Git", "Pro Git, Kapitel 7.10 · git blame und git bisect", "https://git-scm.com/book/de/v2/Git-Tools-Debuggen-mit-Git"),
+    ("Revisions-Auswahl", "Pro Git, Kapitel 7.1 · Commits und Bereiche angeben", "https://git-scm.com/book/de/v2/Git-Tools-Revisions-Auswahl"),
+    ("git log", "Git-Referenz · Filter nach Pfad, Autor und Zeitraum, englisch", "https://git-scm.com/docs/git-log"),
+    ("git bisect", "Git-Referenz · fehlerhaften Commit per Binärsuche finden, englisch", "https://git-scm.com/docs/git-bisect"),
+    ("git revert", "Git-Referenz, englisch", "https://git-scm.com/docs/git-revert"),
+], "git bisect wurde in der Übung nicht benötigt, ist aber das passende Werkzeug, wenn zwischen gutem und schlechtem Stand Hunderte Commits liegen. Kapitel 7.10 zeigt es an einem Beispiel.")
 
 content(d, "abschluss", "Einführung", "Abschluss Tag 1", "Rückblick und Ausblick",
         stations([1, 2], ["Erledigt: Branch je Aufgabe", "Erledigt: lokale Commits", "Morgen", "Morgen", "Morgen", "Morgen"]) +

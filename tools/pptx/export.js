@@ -76,6 +76,7 @@ function extract() {
         font: family(cs.fontFamily), size: parseFloat(cs.fontSize),
         spacing: cs.letterSpacing === 'normal' ? 0 : parseFloat(cs.letterSpacing),
         upper: cs.textTransform === 'uppercase',
+        link: el.closest('a[href]') ? el.closest('a[href]').href : null,
       };
     };
     // Inline-Inhalt eines Blocks als Liste von Absätzen aus Runs.
@@ -288,6 +289,7 @@ function runOpts(pres, r) {
   const o = { fontFace: FONT_FACE(r.font), fontSize: pt(r.size), color: scheme(pres, r.color), bold: r.bold };
   if (r.italic) o.italic = true;
   if (r.spacing) o.charSpacing = pt(r.spacing);
+  if (r.link) o.hyperlink = { url: r.link };
   return o;
 }
 

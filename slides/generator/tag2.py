@@ -33,6 +33,13 @@ content(d, "leitidee", "Einführung", "Leitidee", "Heute: die Stationen 3 bis 6 
         stations([3, 4, 5, 6]) + '<p class="legend">Heute im Fokus: Stationen 3 bis 6 (dunkel hervorgehoben). Die Stationen 1 und 2 aus Tag 1 bilden die Grundlage.</p>',
         "Gestern ging es um das eigene Repository. Heute kommt das Team dazu: Wie gelangt eine Änderung geprüft und nachvollziehbar in den gemeinsamen Stand?")
 
+referenzen(d, "t2-ref", "Einführung", [
+    ("Verteiltes Git", "Pro Git, Kapitel 5 · Arbeitsabläufe im Team, deutsch", "https://git-scm.com/book/de/v2/Verteiltes-Git-Verteilter-Arbeitsablauf"),
+    ("Git-Workflow im Vergleich", "Atlassian Git-Tutorial · zentrale, Feature-Branch- und Gitflow-Abläufe, deutsch", "https://www.atlassian.com/de/git/tutorials/comparing-workflows"),
+    ("Merge requests", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/user/project/merge_requests/"),
+    ("Pro Git", "das vollständige Buch, deutsch", "https://git-scm.com/book/de/v2/"),
+], "Der zweite Tag folgt im Wesentlichen Kapitel 5 von Pro Git. Für alles, was GitLab betrifft, ist die GitLab-Dokumentation maßgeblich; sie liegt nur auf Englisch vor.")
+
 # ---------- Modul 8 ----------
 crumb = M(8, "Rückblick")
 d.section("Modul 08: Rückblick auf Tag 1",
@@ -72,6 +79,13 @@ uebung(d, "m8-uebung", crumb, "Die Skizze ergänzen", [
     "Markieren Sie die Stellen, die noch offen sind: Teilen, Prüfen, Integrieren, Ausliefern.",
 ], "15 Minuten", "Dieselben Kleingruppen wie gestern", "Eine ergänzte Skizze, auf der die offenen Stationen sichtbar sind.",
     notes="Die offenen Stationen sind genau das Programm des heutigen Tages. Verweisen Sie zu Beginn jedes Moduls auf die Skizze.")
+
+referenzen(d, "m8-ref", crumb, [
+    ("Everyday Git", "Git-Referenz · die wichtigsten Befehle nach Rolle geordnet, englisch", "https://git-scm.com/docs/giteveryday"),
+    ("Einfache Snapshot-Funktionen", "Pro Git, Anhang C · Befehlsübersicht", "https://git-scm.com/book/de/v2/Anhang-C:-Git-Kommandos-Einfache-Snapshot-Funktionen"),
+    ("GitHub Git Spickzettel", "Befehlsübersicht zum Ausdrucken, deutsch", "https://training.github.com/downloads/de/github-git-cheat-sheet/"),
+    ("Learn Git Branching", "Wiederholung im Browser, deutsch", "https://learngitbranching.js.org/?locale=de_DE"),
+], "Der Spickzettel stammt von GitHub, die Befehle gelten aber unverändert für GitLab. Everyday Git ist die offizielle Kurzfassung der Git-Dokumentation.")
 
 # ---------- Modul 9 ----------
 crumb = M(9, "Integrieren")
@@ -130,6 +144,14 @@ uebung(d, "m9-uebung", crumb, "Konflikte gezielt herbeiführen", [
 ], "30 Minuten", "Partnerarbeit", "Zwei gelöste Konflikte und ein abgebrochener Merge in der Historie.",
     notes="Benachbarte Zeilen führen in der Regel ebenfalls zu einem Konflikt, weil Git Änderungen abschnittsweise vergleicht. Gute Gelegenheit, über kleine, fokussierte Commits zu sprechen.")
 
+referenzen(d, "m9-ref", crumb, [
+    ("Einfaches Branching und Merging", "Pro Git, Kapitel 3.2 · Abschnitt Merge-Konflikte", "https://git-scm.com/book/de/v2/Git-Branching-Einfaches-Branching-und-Merging"),
+    ("Fortgeschrittenes Merging", "Pro Git, Kapitel 7.8 · Konflikte untersuchen und abbrechen", "https://git-scm.com/book/de/v2/Git-Tools-Fortgeschrittenes-Merging"),
+    ("Wie löst man Merge-Konflikte in Git?", "Atlassian Git-Tutorial, deutsch", "https://www.atlassian.com/de/git/tutorials/using-branches/merge-conflicts"),
+    ("Merge conflicts", "GitLab-Dokumentation · Konflikte im Merge Request lösen, englisch", "https://docs.gitlab.com/user/project/merge_requests/conflicts/"),
+    ("git merge", "Git-Referenz · Konfliktmarkierungen und Strategien, englisch", "https://git-scm.com/docs/git-merge"),
+], "Kapitel 7.8 zeigt, wie man einen Konflikt mit git diff und git log --merge untersucht, bevor man ihn löst. Die GitLab-Seite beschreibt, welche Konflikte direkt im Browser lösbar sind.")
+
 # ---------- Modul 10 ----------
 crumb = M(10, "Teilen und abholen")
 d.section("Modul 10: Teilen und abholen – mit Remote-Repositories arbeiten",
@@ -186,6 +208,14 @@ uebung(d, "m10-uebung", crumb, "Erste Schritte im Team-Repository", [
 ], "35 Minuten", "Teams mit 3 bis 4 Personen", "Jede Person hat einen geteilten Branch; alle lokalen main-Branches sind auf dem gleichen Stand.",
     notes="Für Schritt 4 eignet sich der Web-Editor von GitLab. So sehen alle, dass auch Änderungen außerhalb des eigenen Rechners abgeholt werden müssen.")
 
+referenzen(d, "m10-ref", crumb, [
+    ("Mit Remotes arbeiten", "Pro Git, Kapitel 2.5", "https://git-scm.com/book/de/v2/Git-Grundlagen-Mit-Remotes-arbeiten"),
+    ("Remote-Branches", "Pro Git, Kapitel 3.5 · Tracking-Branches, ahead und behind", "https://git-scm.com/book/de/v2/Git-Branching-Remote-Branches"),
+    ("git fetch", "Git-Referenz, englisch", "https://git-scm.com/docs/git-fetch"),
+    ("git pull", "Git-Referenz, englisch", "https://git-scm.com/docs/git-pull"),
+    ("git push", "Git-Referenz, englisch", "https://git-scm.com/docs/git-push"),
+], "Kapitel 3.5 erklärt die Tracking-Beziehung zwischen lokalem Branch und origin/main ausführlicher als dieses Modul. Bei Fragen zu pull mit Rebase oder Merge auf die Referenz zu git pull verweisen.")
+
 # ---------- Modul 11 ----------
 crumb = M(11, "Gemeinsam prüfen")
 d.section("Modul 11: Gemeinsam prüfen – Merge Requests und Code Review",
@@ -241,6 +271,14 @@ uebung(d, "m11-uebung", crumb, "Review im Team", [
 ], "30 Minuten", "Teams mit 3 bis 4 Personen", "Mindestens zwei geprüfte und gemergte Merge Requests je Team.",
     notes="main ist in den Team-Repositories bereits geschützt. Der abgelehnte Push in Schritt 5 ist beabsichtigt.")
 
+referenzen(d, "m11-ref", crumb, [
+    ("Merge requests", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/user/project/merge_requests/"),
+    ("Merge request approvals", "GitLab-Dokumentation · Freigaberegeln, englisch", "https://docs.gitlab.com/user/project/merge_requests/approvals/"),
+    ("Google Engineering Practices: Code Review", "Leitfaden für Autoren und Reviewer, englisch", "https://google.github.io/eng-practices/review/"),
+    ("Conventional Comments", "Kennzeichnung von Review-Kommentaren, englisch", "https://conventionalcomments.org/"),
+    ("An einem Projekt mitwirken", "Pro Git, Kapitel 5.2", "https://git-scm.com/book/de/v2/Verteiltes-Git-An-einem-Projekt-mitwirken"),
+], "Der Google-Leitfaden ist in zwei Teile für Autoren und Reviewer gegliedert, wie die Slide zu guten Reviews. Conventional Comments hilft, Vorschläge von verbindlichen Änderungswünschen zu unterscheiden.")
+
 # ---------- Modul 12 ----------
 crumb = M(12, "Den Teamablauf vereinbaren")
 d.section("Modul 12: Den Teamablauf vereinbaren – Branching-Strategien und Spielregeln",
@@ -294,6 +332,14 @@ uebung(d, "m12-uebung", crumb, "Spielregeln für unser Team", [
     "Halten Sie die Regeln in <b>CONTRIBUTING.md</b> fest und bringen Sie die Datei per Merge Request in main.",
 ], "30 Minuten", "Teams mit 3 bis 4 Personen", "Eine abgestimmte CONTRIBUTING.md in main, angenommen über einen Merge Request.",
     notes="Die Regeln müssen nicht perfekt sein. Wichtig ist, dass das Team sie gemeinsam beschließt und später anpassen kann.")
+
+referenzen(d, "m12-ref", crumb, [
+    ("What is GitLab Flow?", "GitLab, englisch", "https://about.gitlab.com/topics/version-control/what-is-gitlab-flow/"),
+    ("Trunk Based Development", "Paul Hammant · Website zur Strategie, englisch", "https://trunkbaseddevelopment.com/"),
+    ("Patterns for Managing Source Code Branches", "Martin Fowler · Branching-Strategien im Vergleich, englisch", "https://martinfowler.com/articles/branching-patterns.html"),
+    ("Zusammenführen oder Rebase durchführen", "Atlassian Git-Tutorial, deutsch", "https://www.atlassian.com/de/git/tutorials/merging-vs-rebasing"),
+    ("Protected branches", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/user/project/repository/branches/protected/"),
+], "Der Artikel von Martin Fowler ist lang, aber die gründlichste Darstellung der Abwägungen zwischen den Strategien. Für die CONTRIBUTING.md der Übung ist die Seite zu Protected Branches hilfreich.")
 
 exec((HERE / "workflow_module.py").read_text(encoding="utf-8"))
 
@@ -447,6 +493,14 @@ uebung(d, "m13-uebung", crumb, "Ein Migrationsplan für das Reiseportal", [
 ], "25 Minuten", "Teams mit 3 bis 4 Personen", "Ein Migrationsplan auf einer Seite, der in der Abschlussübung umgesetzt wird.",
     notes="Die Übersicht enthält: trunk, drei Branches, zwölf Tags, einen externen Verweis (svn:externals) auf eine gemeinsame Bibliothek und einen Ordner mit großen Bild- und Videodateien der Reiseziele.")
 
+referenzen(d, "m13-ref", crumb, [
+    ("Migration zu Git", "Pro Git, Kapitel 9.2 · Abschnitt Subversion", "https://git-scm.com/book/de/v2/Git-und-andere-VCS-Systeme-Migration-zu-Git"),
+    ("Git als Client", "Pro Git, Kapitel 9.1 · git svn im Parallelbetrieb", "https://git-scm.com/book/de/v2/Git-und-andere-VCS-Systeme-Git-als-Client"),
+    ("git svn", "Git-Referenz · alle Optionen, englisch", "https://git-scm.com/docs/git-svn"),
+    ("Migrate from Subversion", "GitLab-Dokumentation · empfohlene Werkzeuge, englisch", "https://docs.gitlab.com/user/import/#migrate-from-subversion"),
+    ("Von SVN zu Git migrieren", "Atlassian Git-Tutorial, deutsch", "https://www.atlassian.com/de/git/tutorials/migrating-overview"),
+], "Kapitel 9.2 enthält die Schritte dieses Moduls einschließlich der Autorendatei und der Umwandlung von Tags. GitLab empfiehlt git svn nur für kleine, einfache Repositories und nennt für große und verzweigte Repositories reposurgeon.")
+
 # ---------- Modul 14 ----------
 crumb = M(14, "Umzugstag")
 d.section("Modul 14: Abschlussübung „Umzugstag“ – alle sechs Stationen im Team",
@@ -491,6 +545,14 @@ uebung(d, "m14-uebung2", crumb, "Teil 2: Das erste Feature im neuen Zuhause", [
     scenario="Zwei der Aufgaben ändern bewusst dieselbe Stelle in application.yml. Ein Konflikt gehört zum Umzugstag dazu.",
     notes="Aufgabenliste: neue Zahlungsart, Anpassung der Stornofrist, Korrektur in der README, Preisfilter für die Reisesuche.")
 
+referenzen(d, "m14-ref", crumb, [
+    ("Taggen", "Pro Git, Kapitel 2.6 · annotierte und einfache Tags", "https://git-scm.com/book/de/v2/Git-Grundlagen-Taggen"),
+    ("git tag", "Git-Referenz, englisch", "https://git-scm.com/docs/git-tag"),
+    ("git describe", "Git-Referenz · Version aus dem letzten Tag ableiten, englisch", "https://git-scm.com/docs/git-describe"),
+    ("Releases", "GitLab-Dokumentation · Release zu einem Tag anlegen, englisch", "https://docs.gitlab.com/user/project/releases/"),
+    ("Semantic Versioning 2.0.0", "Regeln für Versionsnummern, deutsch", "https://semver.org/lang/de/"),
+], "Semantic Versioning ist eine Empfehlung, keine Pflicht. Viele Teams aus der Automatisierung haben eigene Nummernschemata; wichtig ist, dass der Tag den ausgelieferten Stand eindeutig benennt.")
+
 exec((HERE / "nachbereitung_module.py").read_text(encoding="utf-8"))
 
 # ---------- Modul 15 ----------
@@ -515,6 +577,13 @@ uebung(d, "m15-uebung", crumb, "Unser neuer Arbeitsablauf", [
     "Notieren Sie, was Sie in Ihrem Projekt als Erstes ändern wollen.",
 ], "10 Minuten", "Kleingruppen, dann kurze Runde im Plenum", "Je Gruppe drei Unterschiede und ein erster konkreter Schritt.",
     notes="Abschließend Feedbackbogen ausgeben und auf die Unterlagen im Schulungsportal hinweisen.")
+
+referenzen(d, "m15-ref", crumb, [
+    ("Get started with GitLab CI/CD", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/ci/"),
+    ("Tutorial: Create and run your first GitLab CI/CD pipeline", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/ci/quick_start/"),
+    ("Continuous Integration", "Martin Fowler · Grundlagenartikel, englisch", "https://martinfowler.com/articles/continuousIntegration.html"),
+    ("Git Hooks", "Pro Git, Kapitel 8.3 · Prüfungen vor Commit und Push", "https://git-scm.com/book/de/v2/Git-einrichten-Git-Hooks"),
+], "Das Tutorial von GitLab führt in etwa einer Stunde zur ersten eigenen Pipeline und ist ein guter nächster Schritt nach dem Kurs. Hinweis auf die weiterführenden Trainings der Comquent Academy zu GitLab CI/CD.")
 
 statement(d, "danke", "COMQUENT ACADEMY", "Vielen Dank!",
           "Unterlagen, Übungen und die Git-Rettungskarte finden Sie im Schulungsportal.",

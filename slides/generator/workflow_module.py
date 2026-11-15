@@ -167,3 +167,10 @@ uebung(d, "zw-uebung", crumb, "Ein vollständiger Release-Zyklus", [
 ], "45 Minuten", "Teams mit 3 bis 4 Personen", "Eine grafische Historie, die den ganzen Zyklus mit allen drei Tags zeigt.",
     notes="Zum Abschluss die Historie mit git log --oneline --graph --all anzeigen und mit dem Überblicksbild des Moduls vergleichen.")
 
+referenzen(d, "zw-ref", crumb, [
+    ("A successful Git branching model", "Vincent Driessen · Ursprung des Workflows, englisch", "https://nvie.com/posts/a-successful-git-branching-model/"),
+    ("Gitflow-Workflow", "Atlassian Git-Tutorial, deutsch", "https://www.atlassian.com/de/git/tutorials/comparing-workflows/gitflow-workflow"),
+    ("Branching-Workflows", "Pro Git, Kapitel 3.4 · langlebige und Themen-Branches", "https://git-scm.com/book/de/v2/Git-Branching-Branching-Workflows"),
+    ("Protected branches", "GitLab-Dokumentation, englisch", "https://docs.gitlab.com/user/project/repository/branches/protected/"),
+    ("Semantic Versioning 2.0.0", "Regeln für Versionsnummern, deutsch", "https://semver.org/lang/de/"),
+], "Driessen hat seinem Artikel von 2010 später eine Anmerkung vorangestellt: Für kontinuierlich ausgelieferte Software empfiehlt er einfachere Abläufe. Das passt zur Slide „Wann passt dieser Workflow?“.")

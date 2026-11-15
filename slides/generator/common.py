@@ -1,4 +1,5 @@
 import json, os, html, shutil
+from urllib.parse import unquote
 
 LOGO = "/_blob/c8bbd1d863b96e8d96ffc7eb58fb5315"
 
@@ -130,6 +131,14 @@ section.content .rise{flex:1;min-height:0;display:flex;flex-direction:column;jus
 .tagp.mr{border:2px solid var(--coral-ink);color:var(--coral-ink);background:var(--tint);}
 .legend2{display:flex;gap:40px;margin-top:20px;}
 .legend2 .li{font-size:24px;color:var(--muted);}
+.t-ref{background:var(--card);color:var(--navy);border:2px solid var(--navy);}
+.refs{display:flex;flex-direction:column;gap:22px;}
+.ref{border-left:6px solid var(--coral);padding:2px 0 2px 28px;display:flex;flex-direction:column;gap:4px;}
+.ref .rt{font-size:32px;font-weight:600;line-height:1.3;color:var(--navy);}
+.ref .rq{font-size:24px;font-weight:400;color:var(--muted);}
+.ref .ru{font-family:'JetBrains Mono','Courier New',monospace;font-size:24px;line-height:1.35;color:var(--coral-ink);}
+.ref .ru a{color:var(--coral-ink);text-decoration:none;}
+.checked{font-size:24px;color:var(--muted);margin-top:28px;}
 .rise{animation:rise 520ms ease-out both;animation-delay:120ms;}
 @keyframes rise{from{opacity:0;transform:translateY(18px);}}
 """
@@ -140,7 +149,7 @@ FACES = {
     "jetbrains-mono": {"family": "JetBrains Mono", "href": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap"},
 }
 
-TAGS = {"Theorie": "t-theorie", "Praxis": "t-praxis", "Übung": "t-uebung", "Einführung": "t-intro"}
+TAGS = {"Theorie": "t-theorie", "Praxis": "t-praxis", "Übung": "t-uebung", "Einführung": "t-intro", "Referenzen": "t-ref"}
 
 
 class Deck:
@@ -309,6 +318,22 @@ def uebung(d, sid, crumb, title, tasks, zeit, form, ergebnis, scenario=None, not
             '<div class="mcard"><p class="mk">ARBEITSFORM</p><p class="mv">%s</p></div>'
             '<div class="mcard"><p class="mk">ERGEBNIS</p><p class="mv">%s</p></div></div>') % (zeit, form, ergebnis)
     content(d, sid, "Übung", crumb, title, '<div class="ex">%s%s</div>' % (left, meta), notes)
+
+
+REFS_CHECKED = "15. November 2026"
+
+
+def referenzen(d, sid, crumb, refs, notes):
+    """Übersicht weiterführender Quellen. refs: Liste von (Titel, Quelle, URL), höchstens fünf.
+    Die Links prüft tools/links/check.py in den erzeugten Decks."""
+    assert len(refs) <= 5, sid
+    rows = "".join(
+        '<div class="ref"><p class="rt">%s <span class="rq">· %s</span></p>'
+        '<p class="ru"><a href="%s">%s</a></p></div>'
+        % (t, q, html.escape(u), html.escape(unquote(u).split("://", 1)[1].rstrip("/")))
+        for t, q, u in refs)
+    body = '<div class="refs">%s</div><p class="checked">Links geprüft am %s.</p>' % (rows, REFS_CHECKED)
+    content(d, sid, "Referenzen", crumb, "Zum Nachlesen", body, notes)
 
 
 def table(header, rows, widths):
