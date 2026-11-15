@@ -53,6 +53,22 @@
   "m12-uebung",
   "m12-ref",
   "m12-ki",
+  "zm",
+  "zm-basis",
+  "zm-wege",
+  "zm-graphen",
+  "zm-praxis-wege",
+  "zm-strategien",
+  "zm-optionen",
+  "zm-konflikte",
+  "zm-revert",
+  "zm-gitlab",
+  "zm-wahl",
+  "zm-statement",
+  "zm-best",
+  "zm-uebung",
+  "zm-ref",
+  "zm-ki",
   "zw",
   "zw-branches",
   "zw-ueberblick",
@@ -131,22 +147,26 @@
    "start": "m12"
   },
   "s7": {
+   "description": "Zusatzmodul: Mergen und Merge-Strategien – Fast-Forward, Squash, Strategien und Merge-Methoden in GitLab",
+   "start": "zm"
+  },
+  "s8": {
    "description": "Zusatzmodul: Git-Workflow mit develop-, Feature-, Bugfix-, Release- und Hotfix-Branches",
    "start": "zw"
   },
-  "s8": {
+  "s9": {
    "description": "Modul 13: Den Umzug planen – ein SVN-Repository mit Historie migrieren",
    "start": "m13"
   },
-  "s9": {
+  "s10": {
    "description": "Modul 14: Abschlussübung „Umzugstag“ – alle sechs Stationen im Team",
    "start": "m14"
   },
-  "s10": {
+  "s11": {
    "description": "Zusatzmodul: Nachbereitung des Umzugs – Git LFS, Submodule und Repositories schneiden",
    "start": "zn"
   },
-  "s11": {
+  "s12": {
    "description": "Modul 15: Abschluss – neuer Arbeitsablauf, Ausblick und Feedback",
    "start": "m15"
   }

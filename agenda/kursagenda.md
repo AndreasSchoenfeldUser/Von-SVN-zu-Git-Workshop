@@ -1,6 +1,6 @@
 # Von SVN zu Git – Git Grundlagen für SVN-Umsteiger
 
-Stand: 14.11.2026 · Quelle: Claude Doc https://claude.ai/artifact/CGsZJULWGf8HpK7FWd6Dan
+Stand: 15.11.2026 · Quelle: Claude Doc https://claude.ai/artifact/CGsZJULWGf8HpK7FWd6Dan
 
 ## Kursüberblick
 
@@ -78,6 +78,22 @@ Der zweite Tag behandelt die Stationen „Teilen“ bis „Ausliefern“ und end
 | 15:30 | Abschlussübung „Umzugstag“ | Die Teams ziehen das SVN-Repository des Reiseportals nach GitLab um, durchlaufen alle sechs Stationen mit einem Feature und markieren den ersten Release-Stand |
 | 16:45 | Abschluss | Neuer Arbeitsablauf neben der Skizze vom Auftakt; Ausblick auf CI/CD; Feedback |
 | 17:00 | Ende | |
+
+## Zusatzmodul: Mergen und Merge-Strategien
+
+Das optionale Modul (ca. 75 Minuten) schließt an Modul 12 an und vertieft, was Fast-Forward und 3-Way-Merge (Modul 06), Konflikte (Modul 09) und die Gegenüberstellung von Rebase und Merge (Modul 12) begonnen haben. Es eignet sich für Teams, die ihre Merge-Regeln in GitLab festlegen wollen.
+
+| Thema | Inhalte |
+| --- | --- |
+| Grundlagen | Was Git beim Mergen vergleicht: Merge-Basis, ours und theirs im 3-Way-Merge |
+| Wege der Integration | Merge-Commit (`--no-ff`), Fast-Forward (`--ff-only`), Squash (`--squash`), Rebase mit Fast-Forward; was jeweils in der Historie sichtbar bleibt |
+| Strategien und Optionen | Die Strategien ort, recursive, resolve, octopus, ours und subtree; Optionen wie `-X ignore-space-change`, `-X ours`/`-X theirs` und `-X renormalize`; Unterschied zwischen `-X ours` und `-s ours` |
+| Konflikte und Korrekturen | Konfliktdarstellung mit `merge.conflictStyle zdiff3`, gelöste Konflikte mit `rerere` wiederverwenden, einen Merge mit `ORIG_HEAD` verwerfen oder mit `git revert -m 1` zurücknehmen |
+| GitLab und Best Practices | Merge-Methoden „Merge commit“, „Merge commit with semi-linear history“ und „Fast-forward merge“, Squash-Einstellungen; welcher Weg wozu passt; Regeln vor, beim und nach dem Merge |
+
+**Übung:** „Vier Branches, vier Wege“ (35 Minuten).
+
+Für den Einstieg nach SVN wird „Merge commit with semi-linear history“ mit Squash auf „Allow“ empfohlen. Die Historie bleibt übersichtlich und zeigt trotzdem, wo eine Aufgabe begonnen und geendet hat.
 
 ## Zusatzmodul: Der Git-Workflow
 

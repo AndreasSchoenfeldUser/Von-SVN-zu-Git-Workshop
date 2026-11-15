@@ -22,7 +22,7 @@ content(d, "ablauf", "Einführung", "Kursablauf", "Der zweite Tag im Überblick"
             ["10:45", "10 · Teilen und abholen", "Station 3"],
             ["13:00", "11 · Gemeinsam prüfen", "Station 4"],
             ["13:45", "12 · Den Teamablauf vereinbaren", "Teamregeln"],
-            ["optional", "Zusatz · Der Git-Workflow", "ca. 60 Minuten"],
+            ["optional", "Zusatz · Merge-Strategien, Git-Workflow", "ca. 75 und 60 Minuten"],
             ["14:45", "13 · Den Umzug planen", "Migration"],
             ["15:30", "14 · Abschlussübung „Umzugstag“", "Station 1 bis 6"],
             ["16:45", "15 · Abschluss", "Ausblick, Feedback"],
@@ -377,6 +377,7 @@ prompts(d, "m12-ki", crumb, [
     ("Übertragen", "Hilf mir, eine CONTRIBUTING.md für unser Team zu schreiben. Frage mich nacheinander nach Branching-Strategie, Branch-Namen, Commit Messages und Regeln für Merge Requests."),
 ], "Der dritte Prompt entspricht der Übung dieses Moduls und eignet sich, um die CONTRIBUTING.md im eigenen Team zu wiederholen.")
 
+exec((HERE / "merge_module.py").read_text(encoding="utf-8"))
 exec((HERE / "workflow_module.py").read_text(encoding="utf-8"))
 
 # ---------- Modul 13 ----------
