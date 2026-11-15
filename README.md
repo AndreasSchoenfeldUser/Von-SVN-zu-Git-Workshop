@@ -14,6 +14,7 @@ Zweitägiges Training der Comquent Academy für Entwickler, die von Subversion (
 | `slides/pptx/` | PowerPoint-Fassung beider Tage (`tag1.pptx`, `tag2.pptx`) und jedes Kapitels (`kapitel/*.pptx`), aus den Deck-Dateien erzeugt |
 | `tools/preview/` | Lokale Vorschau der Slides als PNG |
 | `tools/pptx/` | Export der Decks nach PowerPoint |
+| `trainer/ki-prompts-pruefung.md` | Für Trainer: Test der KI-Prompts mit Claude, beobachtete Fehler der KI und Empfehlungen für den Kurs |
 | `artifacts.json` | Zuordnung zu den veröffentlichten Claude-Artefakten (Decks und Agenda) |
 
 Umfang: Tag 1 mit 55 Slides (Module 01–07), Tag 2 mit 106 Slides (Module 08–15 sowie die Zusatzmodule Merge-Strategien, Git-Workflow und Nachbereitung des Umzugs). Jedes Modul besteht aus Trennfolie, Theorie, Praxis mit Befehlsbeispielen und Übung und liegt zusätzlich als eigenes Deck vor (20 Kapitel).

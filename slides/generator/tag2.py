@@ -41,10 +41,10 @@ referenzen(d, "t2-ref", "Einführung", [
 ], "Der zweite Tag folgt im Wesentlichen Kapitel 5 von Pro Git. Für alles, was GitLab betrifft, ist die GitLab-Dokumentation maßgeblich; sie liegt nur auf Englisch vor.")
 
 prompts(d, "t2-ki", "Einführung", [
-    ("Verstehen", "Erkläre, wie ein Team mit Git und GitLab zusammenarbeitet: vom eigenen Branch über Push und Merge Request bis zum Release-Tag. Zeige, wo sich das vom Arbeiten mit einem zentralen SVN-Server unterscheidet."),
-    ("Üben", "Stelle mir zehn Quizfragen zu den Stationen Teilen, Prüfen lassen, Integrieren und Ausliefern mit Git und GitLab. Frage einzeln und erkläre falsche Antworten."),
-    ("Übertragen", "Wir sind fünf Entwickler und liefern alle vier Wochen aus. Skizziere einen einfachen Teamablauf mit Git und GitLab und nenne die Regeln, die wir dafür festlegen müssen."),
-], "Wie an Tag 1: Die Prompts sind für die Nacharbeit gedacht. Antworten mit den Referenzen abgleichen und keinen Firmencode eingeben.")
+    ("Verstehen", "Erkläre, wie ein Team mit Git und GitLab Free zusammenarbeitet: vom eigenen Branch über Push und Merge Request bis zum Release. Vergleiche die Arbeitsabläufe mit SVN, wo Branches billige Kopien sind und Konflikte lokal beim Update gelöst werden."),
+    ("Üben", "Stelle mir zehn Quizfragen mittlerer Schwierigkeit zu konkreten Situationen beim Teilen, Prüfen, Integrieren und Ausliefern mit Git und GitLab, etwa einem abgelehnten Push oder einer roten Pipeline. Frage einzeln und erkläre falsche Antworten."),
+    ("Übertragen", "Wir sind fünf Entwickler, nutzen GitLab Free und liefern alle vier Wochen aus. Skizziere einen möglichst einfachen Teamablauf und die Regeln, die wir festlegen müssen. Kennzeichne GitLab-Einstellungen, die eine kostenpflichtige Stufe brauchen."),
+], "Wie an Tag 1: Die Prompts sind für die Nacharbeit gedacht. Auch mit Hinweis im Prompt beschrieb Claude SVN-Branches im Test teils noch als teuer und benannte die Merge-Methoden von GitLab mit GitHub-Begriffen. Verpflichtende Approvals gibt es erst ab GitLab Premium.")
 
 # ---------- Modul 8 ----------
 crumb = M(8, "Rückblick")
@@ -94,9 +94,9 @@ referenzen(d, "m8-ref", crumb, [
 ], "Der Spickzettel stammt von GitHub, die Befehle gelten aber unverändert für GitLab. Everyday Git ist die offizielle Kurzfassung der Git-Dokumentation.")
 
 prompts(d, "m8-ki", crumb, [
-    ("Verstehen", "Fasse die Git-Grundlagen zusammen, die man vor der Teamarbeit sicher beherrschen sollte: drei Bereiche, Commit, Branch und Rückgängigmachen. Je ein kurzer Absatz, ohne Fachjargon."),
+    ("Verstehen", "Fasse die Git-Grundlagen zusammen, die man vor der Teamarbeit sicher beherrschen sollte: Working Directory, Staging Area und Repository, Commit, Branch und Rückgängigmachen. Je ein kurzer Absatz, ohne Fachjargon."),
     ("Üben", "Zeige mir die Ausgabe von git log --oneline --graph eines kleinen Repositories und stelle mir Fragen dazu: Welche Branches gibt es, wo wurde gemergt, worauf zeigt HEAD?"),
-    ("Übertragen", "Erstelle mir eine einseitige Übersicht für typische Pannen: falsche Datei vorgemerkt, Commit Message vertippt, auf dem falschen Branch gearbeitet, Änderungen versehentlich verworfen."),
+    ("Übertragen", "Erstelle mir eine einseitige Übersicht für typische Pannen: falsche Datei vorgemerkt, Commit Message vertippt, auf dem falschen Branch gearbeitet, Änderungen versehentlich verworfen. Unterscheide jeweils, ob schon gepusht wurde."),
 ], "Die erzeugte Übersicht mit der Git-Rettungskarte aus dem Schulungsportal vergleichen lassen. Abweichungen sind ein guter Anlass für Rückfragen.")
 
 # ---------- Modul 9 ----------
@@ -165,10 +165,10 @@ referenzen(d, "m9-ref", crumb, [
 ], "Kapitel 7.8 zeigt, wie man einen Konflikt mit git diff und git log --merge untersucht, bevor man ihn löst. Die GitLab-Seite beschreibt, welche Konflikte direkt im Browser lösbar sind.")
 
 prompts(d, "m9-ki", crumb, [
-    ("Verstehen", "Erkläre, wann Git einen Merge-Konflikt meldet und wann es Änderungen automatisch zusammenführt. Zeige an einer YAML-Datei, wie Konfliktmarkierungen aussehen und was jeder Abschnitt bedeutet."),
-    ("Üben", "Erzeuge drei Konflikte unterschiedlicher Schwierigkeit in einer application.yml, jeweils mit Konfliktmarkierungen. Ich schreibe die aufgelöste Fassung, du prüfst sie und erklärst Fehler."),
-    ("Übertragen", "Wie können wir Merge-Konflikte im Team seltener machen? Nenne konkrete Maßnahmen zu Branch-Dauer, Dateistruktur und Formatierung für Java-Code und Konfigurationsdateien."),
-], "Der Übungs-Prompt setzt die Übung dieses Moduls fort. Beim dritten Prompt auf einheitliche Formatierung (Formatter, .editorconfig) und kurze Branches achten.")
+    ("Verstehen", "Erkläre, wann Git einen Merge-Konflikt meldet und wann es automatisch zusammenführt, auch bei benachbarten Zeilen. Zeige an einer YAML-Datei die Basisversion und beide Fassungen, einmal ohne und einmal mit Konflikt, und erkläre die Konfliktmarkierungen."),
+    ("Üben", "Erzeuge eine application.yml für Spring Boot mit drei Konflikten aus einem einzigen Merge, so wie Git sie tatsächlich darstellt, mit steigender Schwierigkeit. Ich schreibe die aufgelöste Fassung, du prüfst sie und erklärst Fehler."),
+    ("Übertragen", "Wie können wir Merge-Konflikte in unserem GitLab-Team seltener machen? Nenne konkrete Maßnahmen zu Branch-Dauer, Dateistruktur und Formatierung für Java-Code mit Maven und Dateien wie application.yml. Verwende GitLab-Begriffe."),
+], "Der Übungs-Prompt setzt die Übung dieses Moduls fort. Hartnäckiger KI-Fehler in allen Testläufen: Änderungen in direkt benachbarten Zeilen würden automatisch zusammengeführt. Richtig: Git meldet dann einen Konflikt; erst eine unveränderte Zeile dazwischen erlaubt den automatischen Merge.")
 
 # ---------- Modul 10 ----------
 crumb = M(10, "Teilen und abholen")
@@ -235,10 +235,10 @@ referenzen(d, "m10-ref", crumb, [
 ], "Kapitel 3.5 erklärt die Tracking-Beziehung zwischen lokalem Branch und origin/main ausführlicher als dieses Modul. Bei Fragen zu pull mit Rebase oder Merge auf die Referenz zu git pull verweisen.")
 
 prompts(d, "m10-ki", crumb, [
-    ("Verstehen", "Erkläre den Unterschied zwischen git fetch, git pull und git push und was origin/main genau ist. Nutze dafür ein Bild mit meinem Rechner und dem GitLab-Server."),
-    ("Üben", "Zeige mir Ausgaben von git status mit Angaben wie „ahead 2“ oder „behind 3“ und frage mich, was ich jeweils tun sollte, bevor ich meine Arbeit teile."),
-    ("Übertragen", "Mein git push wird abgelehnt, weil der Remote-Branch neuere Commits enthält. Erkläre, warum das passiert, und vergleiche die Lösung mit Merge und mit Rebase."),
-], "Der dritte Prompt leitet zu Modul 12 über, in dem Rebase und Merge gegenübergestellt werden.")
+    ("Verstehen", "Erkläre git fetch, git pull, git push und was origin/main ist, mit einem Bild aus meinem Rechner und dem GitLab-Server. Wann nimmt der Server einen Push an? Erkläre auch, warum git pull ohne Konfiguration abbricht, wenn beide Seiten neue Commits haben."),
+    ("Üben", "Zeige mir nacheinander Ausgaben von git status mit Angaben wie „ahead 2“ oder „behind 3“ und frage mich jeweils, was ich vor dem Teilen tun sollte. Warte auf meine Antwort und bedenke, dass git status nur den Stand des letzten fetch kennt."),
+    ("Übertragen", "Mein git push wird abgelehnt, weil der Remote-Branch neuere Commits enthält; meine Commits sind noch nicht gepusht. Spiele Merge und Rebase getrennt durch: Ist der Remote-Stand danach Vorfahre meines Branches, und genügt dann ein normaler Push?"),
+], "Der erste Prompt nennt das Abbruchverhalten von git pull ausdrücklich, weil Claude im Test sonst behauptete, git pull erzeuge einen Merge-Commit. Richtig: Der Server nimmt nur Fast-Forwards an; nach einem Rebase noch nicht gepushter Commits genügt ein normaler Push. Der dritte Prompt leitet zu Modul 12 über.")
 
 # ---------- Modul 11 ----------
 crumb = M(11, "Gemeinsam prüfen")
@@ -304,10 +304,10 @@ referenzen(d, "m11-ref", crumb, [
 ], "Der Google-Leitfaden ist in zwei Teile für Autoren und Reviewer gegliedert, wie die Slide zu guten Reviews. Conventional Comments hilft, Vorschläge von verbindlichen Änderungswünschen zu unterscheiden.")
 
 prompts(d, "m11-ki", crumb, [
-    ("Verstehen", "Was gehört in eine gute Merge-Request-Beschreibung? Erstelle eine Vorlage für GitLab mit Abschnitten für Zweck, Änderungen, Tests und offene Fragen."),
-    ("Üben", "Schreibe einen kleinen Java-Diff mit drei versteckten Schwächen. Ich formuliere Review-Kommentare, und du bewertest Inhalt und Ton meiner Kommentare."),
-    ("Übertragen", "Welche Regeln für Merge Requests passen zu einem Team mit fünf Personen: Größe, Anzahl der Freigaben, Pipeline-Pflicht, Antwortzeit? Begründe jede Regel."),
-], "Der Übungs-Prompt lässt die KI den Code erzeugen. So muss niemand eigenen Firmencode einfügen. Die Vorlage aus dem ersten Prompt kann als .gitlab/merge_request_templates/ ins Repository.")
+    ("Verstehen", "Was gehört in eine gute Merge-Request-Beschreibung? Erstelle eine Vorlage für GitLab mit Abschnitten für Zweck, Änderungen, Tests und offene Fragen, und sage, wo die Vorlage im Repository liegen muss."),
+    ("Üben", "Schreibe eine Spring-Boot-Klasse von höchstens 40 Zeilen, die ohne weitere Klassen kompiliert und genau drei Schwächen enthält; gib sie vollständig aus, nicht als Diff. Ich schreibe Review-Kommentare; nenne die Schwächen erst danach und bewerte Inhalt und Ton."),
+    ("Übertragen", "Welche Regeln für Merge Requests passen zu einem Team mit fünf Personen: Größe, Freigaben, Pipeline-Pflicht, Antwortzeit? Begründe jede Regel und nenne die GitLab-Einstellung, mit der sie sich durchsetzen lässt, samt nötiger GitLab-Stufe."),
+], "Der Übungs-Prompt lässt die KI den Code erzeugen; so muss niemand Firmencode einfügen. Im Test enthielt die Klasse meist mehr als die verlangten drei Schwächen; zusätzliche Funde sind kein Fehler der Teilnehmenden. Verpflichtende Freigaben und Code Owners gibt es erst ab GitLab Premium.")
 
 # ---------- Modul 12 ----------
 crumb = M(12, "Den Teamablauf vereinbaren")
@@ -373,8 +373,8 @@ referenzen(d, "m12-ref", crumb, [
 
 prompts(d, "m12-ki", crumb, [
     ("Verstehen", "Vergleiche GitLab Flow, Trunk-based Development und Gitflow: Für welche Teams und Auslieferungsrhythmen eignet sich welche Strategie, und welche Voraussetzungen braucht sie?"),
-    ("Üben", "Erkläre den Unterschied zwischen Merge und Rebase mit ASCII-Graphen. Stelle mir danach drei Situationen vor, und ich entscheide, ob Rebase dort unbedenklich ist."),
-    ("Übertragen", "Hilf mir, eine CONTRIBUTING.md für unser Team zu schreiben. Frage mich nacheinander nach Branching-Strategie, Branch-Namen, Commit Messages und Regeln für Merge Requests."),
+    ("Üben", "Erkläre den Unterschied zwischen Merge und Rebase mit ASCII-Graphen. Beschreibe mir danach nacheinander drei Situationen; ich entscheide jeweils, ob Rebase dort unbedenklich ist. Beginne mit der ersten Situation und warte auf meine Antwort."),
+    ("Übertragen", "Hilf mir, eine CONTRIBUTING.md für unser GitLab-Team zu schreiben. Frage mich nacheinander nach Branching-Strategie, Branch-Namen, Commit Messages und Regeln für Merge Requests, je Nachricht genau eine Frage."),
 ], "Der dritte Prompt entspricht der Übung dieses Moduls und eignet sich, um die CONTRIBUTING.md im eigenen Team zu wiederholen.")
 
 exec((HERE / "merge_module.py").read_text(encoding="utf-8"))
@@ -539,10 +539,10 @@ referenzen(d, "m13-ref", crumb, [
 ], "Kapitel 9.2 enthält die Schritte dieses Moduls einschließlich der Autorendatei und der Umwandlung von Tags. GitLab empfiehlt git svn nur für kleine, einfache Repositories und nennt für große und verzweigte Repositories reposurgeon.")
 
 prompts(d, "m13-ki", crumb, [
-    ("Verstehen", "Erkläre die Schritte einer Migration von SVN nach Git mit git svn: Autorendatei, Klonen mit Standardlayout, Umwandlung von Tags und Branches, Abgleich bis zum Stichtag."),
+    ("Verstehen", "Erkläre die Migration von SVN nach Git mit git svn: Autorendatei mit erfundenen Namen, Klon mit Standardlayout, Tags und Branches, Abgleich bis zum Stichtag. Alle Optionen müssen einen späteren git svn fetch erlauben; begründe die Reihenfolge."),
     ("Üben", "Unser SVN-Repository hat ein Standardlayout, 15 Jahre Historie und 40 Autoren. Stelle mir Fragen für einen Migrationsplan und fasse ihn am Ende als Checkliste zusammen."),
     ("Hintergrund", "Wann reicht git svn für eine Migration aus, und wann sind Werkzeuge wie reposurgeon besser geeignet? Nenne Merkmale eines SVN-Repositories, die eine Migration erschweren."),
-], "Der Übungs-Prompt ergänzt die Übung „Ein Migrationsplan für das Reiseportal“. Keine echten Server-Adressen oder Benutzernamen in den Prompt schreiben.")
+], "Migration ist das fehleranfälligste Thema für KI-Antworten. In allen Testläufen enthielten die git-svn-Befehle Fehler, etwa --no-metadata, falsche Ref-Namen in Schleifen oder Tags, die vor dem letzten Abgleich umgewandelt werden. Antworten nur als Anregung nutzen und mit Kapitel 9.2 von Pro Git und der git-svn-Referenz abgleichen. Keine echten Server-Adressen oder Namen eingeben.")
 
 # ---------- Modul 14 ----------
 crumb = M(14, "Umzugstag")
@@ -597,10 +597,10 @@ referenzen(d, "m14-ref", crumb, [
 ], "Semantic Versioning ist eine Empfehlung, keine Pflicht. Viele Teams aus der Automatisierung haben eigene Nummernschemata; wichtig ist, dass der Tag den ausgelieferten Stand eindeutig benennt.")
 
 prompts(d, "m14-ki", crumb, [
-    ("Verstehen", "Erkläre den Unterschied zwischen annotierten und einfachen Tags in Git und warum Release-Stände annotiert werden sollten. Wie zeigt git describe die Version eines Builds an?"),
-    ("Üben", "Nenne mir fünf Änderungen an einer Software und lass mich nach Semantic Versioning entscheiden, ob Major, Minor oder Patch erhöht wird. Erkläre meine Fehler."),
-    ("Übertragen", "Wie kann ich in einem Maven-Projekt die Versionsnummer aus dem Git-Tag ableiten? Zeige zwei gängige Ansätze und ihre Vor- und Nachteile."),
-], "Beim dritten Prompt nennen die Modelle meist Maven-Plugins. Plugin-Namen und Versionen vor dem Einsatz auf Maven Central prüfen.")
+    ("Verstehen", "Erkläre den Unterschied zwischen annotierten und einfachen Tags in Git und warum Release-Stände annotiert werden sollten; begründe nur mit Eigenschaften von Git selbst. Wie zeigt git describe die Version eines Builds an?"),
+    ("Üben", "Nenne mir fünf Änderungen an einer Software und lass mich nach Semantic Versioning 2.0.0 entscheiden, ob Major, Minor oder Patch erhöht wird. Gib kein Antwortbeispiel vor. Bewerte am Wortlaut der Spezifikation: Was sie mit MAY erlaubt, ist kein Fehler."),
+    ("Übertragen", "Wie leite ich in einem Maven-Projekt, das mit GitLab CI gebaut wird, die Versionsnummer aus dem Git-Tag ab? Zeige zwei gängige Ansätze mit Vor- und Nachteilen. Nenne groupId und artifactId, aber keine Versionsnummern der Plugins."),
+], "Im Test nannte Claude eine Plugin-Version, die es nicht gibt; deshalb fragt der dritte Prompt nur nach groupId und artifactId. Versionen auf Maven Central nachsehen. Semantic Versioning ist eine Empfehlung; wichtig ist, dass der Tag den ausgelieferten Stand eindeutig benennt.")
 
 exec((HERE / "nachbereitung_module.py").read_text(encoding="utf-8"))
 
@@ -635,10 +635,10 @@ referenzen(d, "m15-ref", crumb, [
 ], "Das Tutorial von GitLab führt in etwa einer Stunde zur ersten eigenen Pipeline und ist ein guter nächster Schritt nach dem Kurs. Hinweis auf die weiterführenden Trainings der Comquent Academy zu GitLab CI/CD.")
 
 prompts(d, "m15-ki", crumb, [
-    ("Verstehen", "Erkläre, wie eine GitLab-CI/CD-Pipeline durch Push, Merge Request und Tag ausgelöst wird. Zeige eine einfache .gitlab-ci.yml für ein Maven-Projekt mit Build und Tests."),
-    ("Hintergrund", "Was bedeutet Continuous Integration im Sinne von Martin Fowler, und welche Voraussetzungen muss ein Team mit Git dafür erfüllen? Wie hängen kurze Branches und CI zusammen?"),
-    ("Übertragen", "Ich will die ersten 30 Tage nach unserer Umstellung auf Git planen. Stelle mir Fragen zu Team, Projekt und Werkzeugen und erstelle daraus einen Plan mit Zielen für jede Woche."),
-], "Der dritte Prompt passt zur Abschlussübung: Die Teilnehmenden können ihren ersten konkreten Schritt als Ausgangspunkt nehmen. Hinweis auf die weiterführenden Trainings zu GitLab CI/CD.")
+    ("Verstehen", "Erkläre, wie eine GitLab-CI/CD-Pipeline durch Push, Merge Request und Tag ausgelöst wird, und unterscheide die Pipeline-Arten für Merge Requests samt GitLab-Stufe. Zeige eine einfache .gitlab-ci.yml für Maven mit Build und Tests, ohne doppelte Pipelines."),
+    ("Hintergrund", "Was bedeutet Continuous Integration im Sinne von Martin Fowler, und welche Voraussetzungen muss ein Team mit Git dafür erfüllen? Wie hängen kurze Branches und CI zusammen? Grenze CI von Continuous Delivery ab."),
+    ("Übertragen", "Ich will die ersten 30 Tage nach unserer Umstellung auf Git und GitLab planen; main ist von Anfang an geschützt. Stelle mir Fragen zu Team, Projekt und Werkzeugen und erstelle daraus einen Plan mit Zielen für jede Woche, der alle 30 Tage abdeckt."),
+], "Ohne Zusatz erzeugte Claude im Test eine .gitlab-ci.yml mit doppelten Pipelines; maßgeblich ist die GitLab-Doku zu workflow:rules. Normale MR-Pipelines testen den Source-Branch, das Merge-Ergebnis erst Merged-results-Pipelines ab Premium. Hinweis auf die weiterführenden Trainings der Comquent Academy zu GitLab CI/CD.")
 
 statement(d, "danke", "COMQUENT ACADEMY", "Vielen Dank!",
           "Unterlagen, Übungen und die Git-Rettungskarte finden Sie im Schulungsportal.",

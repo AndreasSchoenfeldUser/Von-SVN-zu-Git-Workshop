@@ -124,7 +124,7 @@ referenzen(d, "zn-ref", crumb, [
 ], "Die Referenz zu git filter-branch rät selbst zu git filter-repo; dessen Dokumentation enthält eine Übersicht, wie sich filter-branch-Aufrufe übertragen lassen. Für Submodule ist Kapitel 7.11 von Pro Git die beste deutschsprachige Darstellung.")
 
 prompts(d, "zn-ki", crumb, [
-    ("Verstehen", "Erkläre, wie Git LFS große Dateien speichert und was sich für Entwickler beim Klonen und Auschecken ändert. Was passiert mit der Historie bei git lfs migrate import?"),
-    ("Hintergrund", "Vergleiche Git-Submodule und git subtree für eine gemeinsam genutzte Bibliothek. Welche typischen Fehler machen Teams mit Submodulen, und wie vermeidet man sie?"),
-    ("Übertragen", "Wir wollen ein Unterverzeichnis mit seiner Historie in ein eigenes Repository abtrennen. Vergleiche git filter-branch und git filter-repo und beschreibe die Schritte mit filter-repo."),
-], "git subtree wird im Kurs nicht behandelt; der zweite Prompt zeigt die Alternative zu Submodulen. Vor jedem Umschreiben der Historie eine Sicherungskopie anlegen lassen.")
+    ("Verstehen", "Erkläre, wie Git LFS große Dateien speichert und was sich für Entwickler beim Klonen und Auschecken ändert. Was passiert mit der Historie bei git lfs migrate import, mit und ohne --everything?"),
+    ("Hintergrund", "Vergleiche Git-Submodule und git subtree für eine gemeinsam genutzte Bibliothek. Welche typischen Fehler machen Teams mit Submodulen, und wie vermeidet man sie? Sage bei jeder empfohlenen Einstellung, für welche Befehle sie gilt."),
+    ("Übertragen", "Wir wollen ein Unterverzeichnis mit seiner Historie in ein eigenes Repository abtrennen, in dem es zur Wurzel wird. Vergleiche git filter-branch und git filter-repo und beschreibe die Schritte mit filter-repo, ausgehend von einem lokalen Klon."),
+], "git subtree wird im Kurs nicht behandelt; der zweite Prompt zeigt die Alternative zu Submodulen. Im Test behauptete Claude wiederholt, submodule.recurse wirke auch bei git clone; laut git-config gilt es dafür nicht. Vor jedem Umschreiben der Historie eine Sicherungskopie anlegen.")

@@ -176,7 +176,7 @@ referenzen(d, "zw-ref", crumb, [
 ], "Driessen hat seinem Artikel von 2010 später eine Anmerkung vorangestellt: Für kontinuierlich ausgelieferte Software empfiehlt er einfachere Abläufe. Das passt zur Slide „Wann passt dieser Workflow?“.")
 
 prompts(d, "zw-ki", crumb, [
-    ("Verstehen", "Erkläre den Git-Workflow mit develop-, Feature-, Release- und Hotfix-Branches. Warum wird ein Hotfix sowohl nach main als auch nach develop zurückgeführt?"),
-    ("Üben", "Spiele mit mir einen Release-Zyklus in diesem Workflow durch. Du beschreibst die Situation, ich nenne die Git-Befehle, und du korrigierst mich."),
+    ("Verstehen", "Erkläre den Git-Workflow mit develop-, Feature-, Release- und Hotfix-Branches als nummerierte Befehlsfolge. Warum wird ein Hotfix nach main und nach develop zurückgeführt, und was gilt, wenn gerade ein Release-Branch existiert?"),
+    ("Üben", "Spiele mit mir einen Release-Zyklus in diesem Workflow für ein Maven-Projekt in GitLab durch. Du beschreibst die Situation, ich nenne die Git-Befehle, und du korrigierst mich, auch bei den Merge-Optionen."),
     ("Übertragen", "Unser Produkt läuft bei Kunden in mehreren Versionen parallel. Passt ein Workflow mit develop- und Release-Branches dazu, oder gibt es einfachere Alternativen? Wäge ab."),
-], "Die KI wird den Workflow oft „Gitflow“ nennen; das ist derselbe Ansatz. Mit der Slide „Wann passt dieser Workflow?“ abgleichen.")
+], "Die KI nennt den Workflow oft „Gitflow“; das ist derselbe Ansatz. Im Test ließ eine ASCII-Grafik den Hotfix von develop abzweigen; deshalb fragt der Prompt nach einer Befehlsfolge. Mit der Slide „Wann passt dieser Workflow?“ abgleichen.")

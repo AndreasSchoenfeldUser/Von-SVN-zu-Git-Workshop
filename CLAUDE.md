@@ -29,7 +29,13 @@ Leitidee mit sechs Stationen: Aufgabe übernehmen, Arbeiten und festhalten, Teil
 
 - Jedes Modul: Trennfolie (`divider`), Theorie, Praxis (Code links, Erläuterungen rechts), Übung (Aufgaben, Zeit, Arbeitsform, Ergebnis), am Ende eine Referenz-Slide „Zum Nachlesen“ (`referenzen`, höchstens fünf Quellen) und eine Slide „Mit KI vertiefen“ (`prompts`, drei Prompts für Claude und ChatGPT mit den Kennwörtern Verstehen, Üben, Übertragen oder Hintergrund). Kennzeichnung oben links: „Theorie“, „Praxis“, „Übung“, „Einführung“, „Referenzen“, „KI-Prompts“.
 - Referenzen: bevorzugt Pro Git auf Deutsch (git-scm.com/book/de/v2, mit Kapitelnummer), die Git-Referenz und die GitLab-Dokumentation; Sprache der Quelle angeben. Nach Änderungen `python3 tools/links/check.py` ausführen; alle Links müssen erreichbar sein. Das Prüfdatum steht in `REFS_CHECKED` in `common.py`.
-- KI-Prompts: werkzeugneutral, in der Ich-Form an die KI gerichtet, höchstens etwa 230 Zeichen (zwei Zeilen). Keine Aufforderungen, SVN-Befehle in Git-Befehle zu übersetzen; Übungs-Prompts lassen die KI Beispielcode erzeugen, statt eigenen Code einfügen zu lassen.
+- KI-Prompts: werkzeugneutral, in der Ich-Form an die KI gerichtet, höchstens etwa 265 Zeichen (drei Zeilen). Keine Aufforderungen, SVN-Befehle in Git-Befehle zu übersetzen; Übungs-Prompts lassen die KI Beispielcode erzeugen, statt eigenen Code einfügen zu lassen. Aus den Tests (`trainer/ki-prompts-pruefung.md`):
+  - Übungs-Prompts legen den Ablauf fest: eine Situation stellen, auf die Antwort warten, die Lösung erst danach nennen.
+  - GitLab (bei Preisfragen „GitLab Free“) nennen, sonst antwortet die KI mit GitHub-Begriffen.
+  - Befehlsfolgen mit `git init -b main` beginnen lassen; Git 2.54 legt sonst `master` an.
+  - Bei bekannten Fehlvorstellungen die richtige Tatsache in den Prompt schreiben (etwa „Auch in SVN sind Branches billige Kopien“); eine Bitte wie „Beschreibe zutreffend“ hilft nicht.
+  - Code vollständig statt als Diff verlangen und keine mehrstufigen ASCII-Grafiken; beides geriet im Test fehlerhaft.
+  - Geänderte Prompts mindestens zweimal mit Claude testen und die Antworten prüfen; Vorgehen in `trainer/ki-prompts-pruefung.md`.
 - Jede Slide hat Sprechernotizen (`notes`).
 - Farben aus dem Logo der Comquent Academy: Navy `#10345A`, Koralle `#EC3C5C`, Text-Koralle `#B81E3E`, Papier `#F7F4EF`.
 - Schriften: Space Grotesk (Überschriften), Inter (Text), JetBrains Mono (Code).

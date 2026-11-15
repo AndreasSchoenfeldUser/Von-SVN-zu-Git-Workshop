@@ -181,6 +181,6 @@ referenzen(d, "zm-ref", crumb, [
 
 prompts(d, "zm-ki", crumb, [
     ("Verstehen", "Erkläre den 3-Way-Merge in Git: Was ist die Merge-Basis, und warum vergleicht Git nur drei Stände statt aller Commits? Zeige ein Beispiel, bei dem das überrascht."),
-    ("Üben", "Zeichne eine kleine Git-Historie als ASCII-Graph. Frage mich, wie sie nach --no-ff, --squash und Rebase mit Fast-Forward aussieht, und korrigiere meine Antworten."),
+    ("Üben", "Zeichne eine kleine Git-Historie als ASCII-Graph, in der main nach dem Abzweigen von feature weitergewachsen ist. Frage mich, wie sie nach --no-ff, --squash und Rebase mit Fast-Forward aussieht, und korrigiere meine Antworten."),
     ("Übertragen", "Wir arbeiten mit GitLab und Merge Requests. Hilf mir, zwischen Merge commit, semi-linearer Historie und Fast-forward merge zu wählen, mit oder ohne Squash. Frage nach unserem Ablauf."),
 ], "Der Übungs-Prompt wiederholt die Übung dieses Moduls ohne Repository. Beim dritten Prompt die Antwort mit der Slide „Welcher Weg passt wozu?“ abgleichen.")
